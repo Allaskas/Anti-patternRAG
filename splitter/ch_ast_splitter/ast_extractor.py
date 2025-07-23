@@ -4,15 +4,15 @@ import warnings
 from tree_sitter import Language, Parser
 from typing import Optional
 
-from ast_chunk_schema import ASTChunk
-from splitter.ch_ast_splitter.base_chunk import ChunkType
+from splitter.ch_ast_splitter.ast_chunk_schema import ASTChunk
+from splitter.ch_ast_splitter.base_chunk_schema import ChunkType
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 print("Current working directory:", os.getcwd())
 
 # 初始化 Java parser
-JAVA_LANGUAGE = Language('../../build/my-languages.so', 'java')
+JAVA_LANGUAGE = Language('build/my-languages.so', 'java')
 parser = Parser()
 parser.set_language(JAVA_LANGUAGE)
 

@@ -1,10 +1,10 @@
+import json
 import os
+from dataclasses import asdict
 from pathlib import Path
 from typing import List, Union
-
-from ast_chunk_schema import ASTChunk
 from splitter.ch_ast_splitter.ast_extractor import extract_superclass_chunks, extract_subclass_chunks
-from splitter.ch_ast_splitter.base_chunk import BaseChunk
+from splitter.ch_ast_splitter.base_chunk_schema import BaseChunk
 from splitter.ch_ast_splitter.json_processor import load_case_info
 from config.settings import DATA_DIR
 from splitter.ch_ast_splitter.llm_chunk_analyzer import llm_analyze_superclass, llm_analyze_subclass
@@ -64,6 +64,13 @@ def split_ch_case_into_chunks(base_dir: Union[str, Path]) -> List[BaseChunk]:
     # ---- 整合所有 chunk ----
     all_chunks = super_chunks + sub_chunks
     print(all_chunks)
+
+    json_chunks = [chunk.to_dict() for chunk in all_chunks]
+
+    with open("chunks.json", "w", encoding="utf-8") as f:
+        json.dump(json_chunks, f, ensure_ascii=False, indent=2)
+
+    print("存储成功")
     return all_chunks
 
 
