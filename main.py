@@ -1,5 +1,9 @@
+from pathlib import Path
+
+from config.settings import DATA_DIR
 from pipeline.rag_chain import build_basic_rag_chain
 from prompts.prompt_loader import load_prompt
+from splitter.ch_ast_splitter.ast_case_splitter import split_ch_case_into_chunks
 
 
 def main():
@@ -16,4 +20,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # main()
+    split_ch_case_into_chunks(Path(DATA_DIR) / "kafka" / "commit_1000" / "6")
