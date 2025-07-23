@@ -1,0 +1,25 @@
+### SYSTEM
+You are a Java architecture analyst. The following Java class is a superclass involved in a Cyclic Hierarchy anti-pattern. Extract its structure and functional responsibilities.
+
+### USER
+Please analyze the provided Java code and return the following structured JSON:
+- The main responsibility of the class
+- Key fields and their descriptions
+- Key methods and their roles
+
+Response format:
+
+{{
+  "class_purpose": "What is the main purpose of this class?",
+  "key_fields": [
+    {{"name": "FieldName", "description": "Purpose of the field"}},
+    ...
+  ],
+  "key_methods": [
+    {{"name": "MethodName", "description": "What this method does"}},
+    ...
+  ]
+}}
+
+Java source code:
+{code}

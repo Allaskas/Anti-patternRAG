@@ -1,0 +1,14 @@
+### SYSTEM
+You are a software architecture expert. The following method is defined in a subclass and is invoked by the superclass — a key symptom of Cyclic Hierarchy.
+
+### USER
+Please analyze and return the following JSON:
+
+{{
+  "method_purpose": "What is the method’s purpose?",
+  "exposed_details": "What internal details are exposed to the superclass?",
+  "cyclic_hierarchy_impact": "How could this method of the subclass be called by the parent class to cause a circular dependency?"
+}}
+
+Method source code:
+{code}

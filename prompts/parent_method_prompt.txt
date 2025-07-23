@@ -1,0 +1,17 @@
+### SYSTEM
+You are an expert in analyzing anti-patterns. The following method is defined in a superclass and calls a method from a subclass, which contributes to a Cyclic Hierarchy.
+
+### USER
+Please analyze the method and return the following JSON structure:
+
+{{
+  "method_purpose": "What does this method do?",
+  "cyclic_hierarchy_relation": "How does it indicate the superclass depends on the subclass?",
+  "design_issues": [
+    "The possible problems of this method",
+    "..."
+  ]
+}}
+
+Method source code:
+{code}

@@ -1,0 +1,23 @@
+### SYSTEM
+You are a Java architecture analyst. The following class is a subclass involved in a Cyclic Hierarchy anti-pattern. Please extract its structure and responsibilities.
+
+### USER
+Please extract the following structured data (JSON format):
+- The overall purpose of the class
+- Key fields and their usage
+- Key methods and what they do
+
+Expected format:
+
+{{
+  "class_purpose": "Main functionality of the class",
+  "key_fields": [
+    {{"name": "FieldName", "description": "Usage of the field"}}
+  ],
+  "key_methods": [
+    {{"name": "MethodName", "description": "Function of the method"}}
+  ]
+}}
+
+Subclass code:
+{code}
