@@ -5,5 +5,7 @@ langchain_ollama>=0.3.4
 langchain-core>=0.3.69
 langchain_community
 langchain_chroma
+langchain_huggingface
+sentence_transformers
 chromadb
 tree-sitter=0.21.3
