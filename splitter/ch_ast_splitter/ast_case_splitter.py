@@ -24,12 +24,10 @@ def split_ch_case_into_chunks(base_dir: Union[str, Path], group_id) -> dict[str,
     parts = base_dir.parts[-4:]  # 获取倒数4个路径名
     antipattern_type, project_name, commit_number, case_id = parts
 
-    # 找到 JSON 文件（一个案例文件夹应该只有一个 .json）
-    json_files = list(base_dir.glob("*.json"))
+    # 找到 JSON 文件（一个案例文件夹应该只有一个 *antipattern.json）
+    json_files = list(base_dir.glob("*antipattern.json"))
     if not json_files:
-        raise FileNotFoundError(f"No JSON file found in {base_dir}")
-    if len(json_files) > 1:
-        raise ValueError(f"Multiple JSON files found in {base_dir}, expected only one.")
+        raise FileNotFoundError(f"No JSON name *antipattern.json file found in {base_dir}")
 
     json_path = json_files[0]
     case = load_case_info(json_path)
@@ -81,10 +79,14 @@ def split_ch_case_into_chunks(base_dir: Union[str, Path], group_id) -> dict[str,
         "chunks": json_chunks
     }
 
-    with open("chunks.json", "w", encoding="utf-8") as f:
+    # 构造输出路径：和 JSON 文件在同一目录，命名为 `{project}_{case_id}_{antipattern}_chunk.json`
+    chunk_filename = f"{project_name}_{case_id}_{antipattern_type}_chunk.json"
+    output_path = base_dir / chunk_filename
+
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
 
-    print("存储成功")
+    print(f"分块结果已保存至: {output_path}")
     return result
 
 
