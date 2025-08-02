@@ -1,9 +1,19 @@
 import json
 from pathlib import Path
-from typing import List
+from typing import List, Union
 from langchain.schema import Document
-from langchain.vectorstores import Chroma
+from langchain_community.vectorstores import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
+
+from prompts.prompt_loader import load_prompt
+
+PROMPT_FILE_MAP = {
+    "parent_file_summary": "parent_file_summary.txt",
+    "parent_method_summary": "parent_method_summary.txt",
+    "invocation_summary": "invocation_summary.txt",
+    "child_file_summary": "child_file_summary.txt",
+    "child_method_summary": "child_method_summary.txt",
+}
 
 
 def load_chunks_from_json(json_path: Path):
@@ -38,10 +48,13 @@ def build_documents(chunks_json: dict, content_key: str) -> List[Document]:
     return all_documents
 
 
-def init_embedding_model(model_name: str, device: str = "cpu", normalize: bool = False):
+def init_embedding_model(model_name: str, device: str = "cpu", normalize: bool = False, default_task: str = None):
+    model_kwargs = {"device": device, "trust_remote_code": True}
+    if default_task is not None:
+        model_kwargs["default_task"] = default_task
     return HuggingFaceEmbeddings(
         model_name=model_name,
-        model_kwargs={"device": device, 'trust_remote_code': True},
+        model_kwargs=model_kwargs,
         encode_kwargs={"normalize_embeddings": normalize},
     )
 
@@ -57,8 +70,23 @@ def store_to_chroma(documents: List[Document], embedding_model, persist_dir):
     return vectorstore
 
 
-def get_persist_dir_from_chunk_path(vector_store_dir: str, chunk_json_path: Path) -> Path:
+def get_persist_dir_from_chunk_path(vector_store_dir: str, chunk_json_path: Path) -> str:
     # 解析倒数四级路径部分
     parts = chunk_json_path.parts[-5:-1]
     persist_dir = Path(vector_store_dir).joinpath(*parts)
-    return persist_dir
+    return str(persist_dir)
+
+
+def add_prompts_to_documents_qwen3(
+        documents: List[Document], prompt_dir: Union[Path, str]
+) -> List[Document]:
+    new_documents = []
+
+    for doc in documents:
+        chunk_type = doc.metadata.get("chunk_type", "")
+        prompt_key = f"{prompt_dir}/{chunk_type}"
+        prompt = load_prompt(prompt_key)
+        new_content = f"{prompt}\nQuery: {doc.page_content}"
+        new_documents.append(Document(page_content=new_content, metadata=doc.metadata))
+
+    return new_documents

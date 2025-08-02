@@ -8,11 +8,11 @@ from prompts.prompt_loader import load_prompt, split_prompt
 def llm_analyze_superclass(file_path: str, method_code: str, invocation_code: str) -> list[LLMChunk]:
     full_code = read_code_from_file(file_path)
 
-    parent_file_prompt = load_prompt("parent_file_prompt")
+    parent_file_prompt = load_prompt("chunk_prompts/parent_file_prompt")
     parent_file_system_prompt, parent_file_user_prompt = split_prompt(parent_file_prompt)
-    parent_method_prompt = load_prompt("parent_method_prompt")
+    parent_method_prompt = load_prompt("chunk_prompts/parent_method_prompt")
     parent_method_system_prompt, parent_method_user_prompt = split_prompt(parent_method_prompt)
-    invocation_prompt = load_prompt("invocation_prompt")
+    invocation_prompt = load_prompt("chunk_prompts/invocation_prompt")
     invocation_system_prompt, invocation_user_prompt = split_prompt(invocation_prompt)
 
     return [
@@ -40,9 +40,9 @@ def llm_analyze_superclass(file_path: str, method_code: str, invocation_code: st
 def llm_analyze_subclass(file_path: str, method_code: str) -> list[LLMChunk]:
     full_code = read_code_from_file(file_path)
 
-    child_file_prompt = load_prompt("child_file_prompt")
+    child_file_prompt = load_prompt("chunk_prompts/child_file_prompt")
     child_file_system_prompt, child_file_user_prompt = split_prompt(child_file_prompt)
-    child_method_prompt = load_prompt("child_method_prompt")
+    child_method_prompt = load_prompt("chunk_prompts/child_method_prompt")
     child_method_system_prompt, child_method_user_prompt = split_prompt(child_method_prompt)
 
     return [
