@@ -1,0 +1,1 @@
+Instruct: Explain the specific invocation point where the parent class calls the child method. Describe how this call is made, the context in which it occurs, and what it indicates about the dependency relationship.

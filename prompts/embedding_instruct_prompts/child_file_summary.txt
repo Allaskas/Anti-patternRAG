@@ -1,0 +1,1 @@
+Instruct: Provide a summary of the child class file. Outline its key responsibilities and how it extends or modifies the behavior of the parent class.

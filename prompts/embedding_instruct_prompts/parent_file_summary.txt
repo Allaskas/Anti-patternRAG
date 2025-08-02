@@ -1,0 +1,1 @@
+Instruct: Provide a concise summary of the parent class file. Describe its overall structure, primary responsibilities, and how its components are organized.

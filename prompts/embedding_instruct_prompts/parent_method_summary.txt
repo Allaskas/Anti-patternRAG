@@ -1,0 +1,1 @@
+Instruct: Summarize the parent method that invokes the child method. Highlight its main logic, purpose, and how it depends on the behavior of the child method.
