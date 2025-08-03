@@ -27,8 +27,7 @@ def parse_line_range(range_str: str) -> tuple[int, int]:
 
 
 # QWen3 的 Embedding Prompt 所要用到 instruct 和 query 的格式，保留此格式所进行的拆分
-def split_documents_with_instruction_context(documents: list[Document], tokenizer, max_token_length: int,
-                                             chunk_overlap: int = 100) -> list[Document]:
+def split_documents_with_instruction_context(documents: list[Document], tokenizer, max_token_length: int, chunk_overlap: int = 100) -> list[Document]:
     new_documents = []
     for doc in documents:
         content = doc.page_content
