@@ -1,6 +1,5 @@
 import json
 import os
-from dataclasses import asdict
 from pathlib import Path
 from typing import List, Union, Any
 from splitter.ch_ast_splitter.ast_extractor import extract_superclass_chunks, extract_subclass_chunks
@@ -9,6 +8,7 @@ from splitter.ch_ast_splitter.json_processor import load_case_info
 from config.settings import DATA_DIR
 from splitter.ch_ast_splitter.llm_chunk_analyzer import llm_analyze_superclass, llm_analyze_subclass
 from splitter.utils import parse_line_range
+from config.settings import ANTIPATTERN_TYPE
 
 
 def build_chunks(base_dir: Union[str, Path], group_id) -> dict[str, Union[str, list, Any]]:
@@ -20,9 +20,16 @@ def build_chunks(base_dir: Union[str, Path], group_id) -> dict[str, Union[str, l
     """
     base_dir = Path(base_dir)
 
-    # 提取路径倒数四级
-    parts = base_dir.parts[-4:]  # 获取倒数4个路径名
-    antipattern_type, project_name, commit_number, case_id = parts
+    # 得到 chunk 的 metadata 内容，如果是构建 query 的chunk，即 group_id < 0，则其他内容都为-1
+    if group_id < 0:
+        antipatter_type = ANTIPATTERN_TYPE
+        project_name = -1
+        commit_number = -1
+        case_id = -1
+    else:
+        # 提取路径倒数四级
+        parts = base_dir.parts[-4:]  # 获取倒数4个路径名
+        antipattern_type, project_name, commit_number, case_id = parts
 
     # 找到 JSON 文件（一个案例文件夹应该只有一个 *antipattern.json）
     json_files = list(base_dir.glob("*antipattern.json"))
@@ -79,8 +86,11 @@ def build_chunks(base_dir: Union[str, Path], group_id) -> dict[str, Union[str, l
         "chunks": json_chunks
     }
 
-    # 构造输出路径：和 JSON 文件在同一目录，命名为 `{project}_{case_id}_{antipattern}_chunk.json`
-    chunk_filename = f"{project_name}_{case_id}_{antipattern_type}_chunk.json"
+    if group_id < 0:
+        chunk_filename = "query_chunk.json"
+    else:
+        # 构造输出路径：和 JSON 文件在同一目录，命名为 `{project}_{case_id}_{antipattern}_chunk.json`
+        chunk_filename = f"{project_name}_{case_id}_{antipattern_type}_chunk.json"
     output_path = base_dir / chunk_filename
 
     with open(output_path, "w", encoding="utf-8") as f:
