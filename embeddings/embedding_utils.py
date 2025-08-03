@@ -77,9 +77,7 @@ def get_persist_dir_from_chunk_path(vector_store_dir: str, chunk_json_path: Path
     return str(persist_dir)
 
 
-def add_prompts_to_documents_qwen3(
-        documents: List[Document], prompt_dir: Union[Path, str]
-) -> List[Document]:
+def add_prompts_to_documents_qwen3(documents: List[Document], prompt_dir: Union[Path, str]) -> List[Document]:
     new_documents = []
 
     for doc in documents:
@@ -90,3 +88,32 @@ def add_prompts_to_documents_qwen3(
         new_documents.append(Document(page_content=new_content, metadata=doc.metadata))
 
     return new_documents
+
+
+def get_max_token_length(tokenizer) -> int:
+    max_len = tokenizer.model_max_length
+    if max_len > 100000:
+        max_len = 32768  # 默认上限兜底
+    return max_len
+
+
+def check_documents_exceed_max_len(documents: List[Document], tokenizer, model_max_len: int):
+    """
+    检查哪些 documents 的 page_content 超过模型最大 token 长度。
+
+    :param documents: 要分析的 Document 列表
+    :param tokenizer: 已加载的 tokenizer（AutoTokenizer）
+    :param model_max_len: 模型支持的最大 token 数
+    :return: (valid_documents, exceeding_documents) 元组
+    """
+    valid_documents = []
+    exceeding_documents = []
+
+    for doc in documents:
+        token_count = len(tokenizer.encode(doc.page_content, truncation=False))
+        if token_count <= model_max_len:
+            valid_documents.append(doc)
+        else:
+            exceeding_documents.append(doc)
+
+    return valid_documents, exceeding_documents
