@@ -7,7 +7,7 @@ max_chunk_chars = MAX_CHUNK_CHARS
 antipattern_type = ANTIPATTERN_TYPE
 
 
-def build_chunk(case_path: str, case_id: str, max_chunk_chars: int = max_chunk_chars) -> dict:
+def build_chunks(case_path: str, case_id: str, max_chunk_chars: int = max_chunk_chars) -> dict:
     """
     构建单个反模式案例的 chunk（仅包含 JSON 内容）。
     包括：

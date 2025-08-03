@@ -1,3 +1,4 @@
+import glob
 import os
 import shutil
 from pathlib import Path
@@ -98,6 +99,39 @@ def read_code_from_file(file_path: str) -> str:
         raise FileNotFoundError(f"文件不存在: {file_path}")
 
     return path.read_text(encoding="utf-8")
+
+
+def exist_chunk_json(case_path, antipattern_type):
+    """
+    检查 case_path 中是否存在以 {antipattern_type}_chunk.json 命名的文件。
+    如果存在，返回该文件的完整路径；否则返回 None。
+    """
+    pattern = os.path.join(case_path, f"*{antipattern_type}_chunk.json")
+    matches = glob.glob(pattern)
+    return matches[0] if matches else None
+
+
+def iter_case_paths(base_dir, antipattern_type):
+    """
+    遍历 data/{antipattern_type}/project/commit/case 下的所有 case 路径。
+    返回合法的 case_path。
+    """
+    base_dir = os.path.join(base_dir, antipattern_type)
+    for project in os.listdir(base_dir):
+        project_path = os.path.join(base_dir, project)
+        if not os.path.isdir(project_path):
+            continue
+
+        for commit in os.listdir(project_path):
+            commit_path = os.path.join(project_path, commit)
+            if not os.path.isdir(commit_path):
+                continue
+
+            for case_id in os.listdir(commit_path):
+                case_path = os.path.join(commit_path, case_id)
+                if not os.path.isdir(case_path):
+                    continue
+                yield case_path  # 使用生成器返回每一个 case 路径
 
 
 if __name__ == "__main__":
