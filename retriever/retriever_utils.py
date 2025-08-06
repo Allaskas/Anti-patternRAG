@@ -1,6 +1,8 @@
+import json
 import uuid
+from collections import defaultdict
 from pathlib import Path
-from typing import Union
+from typing import Union, List
 
 from langchain_community.vectorstores import Chroma
 
@@ -48,3 +50,28 @@ def add_embeddings(db, docs, embeddings, metadatas):
         metadatas=metadatas,
         ids=ids
     )
+
+
+def aggregate_topk_from_score_files_with_weights(score_files: List[Path], weight_file: Path, top_k: int = 5):
+    scores_by_group = defaultdict(float)
+
+    # 加载权重
+    with open(weight_file, "r", encoding="utf-8") as f:
+        chunk_weights = json.load(f)
+
+    for score_file in score_files:
+        chunk_type = score_file.stem  # eg: "parent_method" from parent_method.json
+        weight = chunk_weights.get(chunk_type, 0.1)  # 默认为0.1，避免缺失权重崩溃
+
+        try:
+            with open(score_file, "r", encoding="utf-8") as f:
+                chunk_scores = json.load(f)
+        except Exception as e:
+            print(f"[ERROR] Failed to load {score_file}: {e}")
+            continue
+
+        for group_id, score in chunk_scores.items():
+            scores_by_group[group_id] += score * weight
+
+    sorted_scores = sorted(scores_by_group.items(), key=lambda x: x[1], reverse=True)
+    return sorted_scores[:top_k]

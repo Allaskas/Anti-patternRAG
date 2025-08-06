@@ -9,10 +9,11 @@ antipattern_type = ANTIPATTERN_TYPE
 def load_query_chunks(case_path: str, antipattern_type: str, mode="ast"):
     group_id = -1
     build_chunks = load_splitter_by_mode(mode)
-    chunks, query_path = build_chunks(case_path, antipattern_type, group_id)
-    return chunks, query_path
+    chunks, query_chunk_path = build_chunks(case_path, antipattern_type, group_id)
+    return chunks, query_chunk_path
 
 
 # 完成 query 的 chunks 的 embedding
 def load_query_embeddings(chunk_path: str):
-    run_embedding_pipeline(chunk_path)
+    query_embedding_path = run_embedding_pipeline(chunk_path)
+    return query_embedding_path
