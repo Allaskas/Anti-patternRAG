@@ -1,4 +1,3 @@
-from langchain.schema import BaseRetriever
 from config.settings import ANTIPATTERN_TYPE, CHUNK_TYPE_WEIGHT_PATH
 from retriever.init_vectprstpre import match_query_to_candidate_chunks
 from retriever.query_matcher import load_query_chunks, load_query_embeddings
