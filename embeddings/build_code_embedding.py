@@ -18,7 +18,7 @@ def build_code_embedding(chunks_json_path: Union[str, Path]):
     chunks = load_chunks_from_json(Path(chunks_json_path))
     group_id = chunks["group_id"]
     documents = build_documents(chunks, content_key="ast_subtree")
-    embedding_model = init_embedding_model(CODE_EMBEDDING_MODEL, default_task="code.passage")
+    embedding_model = init_embedding_model(CODE_EMBEDDING_MODEL)
     tokenizer = AutoTokenizer.from_pretrained(CODE_EMBEDDING_MODEL, trust_remote_code=True)
     model_max_len = get_max_token_length(tokenizer)
     if group_id < 0:

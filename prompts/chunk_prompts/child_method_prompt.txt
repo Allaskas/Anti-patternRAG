@@ -2,6 +2,9 @@
 You are a software architecture expert. The following method is defined in a subclass and is invoked by the superclass — a key symptom of Cyclic Hierarchy.
 
 ### USER
+Method source code:
+{code}
+
 Please analyze and return the following JSON:
 
 {{
@@ -10,5 +13,4 @@ Please analyze and return the following JSON:
   "cyclic_hierarchy_impact": "How could this method of the subclass be called by the parent class to cause a circular dependency?"
 }}
 
-Method source code:
-{code}
+

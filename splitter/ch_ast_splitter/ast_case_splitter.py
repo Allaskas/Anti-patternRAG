@@ -15,6 +15,7 @@ def build_chunks(base_dir: Union[str, Path], antipattern_type, group_id):
     """
     主函数：从一个 CH 案例文件夹中自动定位 JSON 和 Java 文件，抽取 AST 和分析块
     :param base_dir: 指向某个具体 `{id}` 案例文件夹（包含 before/ 与 .json）
+    :param antipattern_type:
     :param group_id:
     :dict[str, Union[str, list, Any]]，每个父子子子块
     """
@@ -62,11 +63,13 @@ def build_chunks(base_dir: Union[str, Path], antipattern_type, group_id):
     invocation_code = snippet.invocation.code
 
     # ---- SuperClass 的子块 ----
+    print("start SuperClass Chunk")
     super_chunks: List[BaseChunk] = []
     super_chunks = extract_superclass_chunks(super_code, super_path, parent_method_loc, invocation_loc)
     super_chunks.extend(llm_analyze_superclass(super_path, parent_method_code, invocation_code))
 
     # ---- SubClass 的子块 ----
+    print("start SubClass Chunk")
     sub_chunks: List[BaseChunk] = []
     sub_chunks = extract_subclass_chunks(sub_code, sub_path, child_method_loc)
     sub_chunks.extend(llm_analyze_subclass(sub_path, child_method_code))
@@ -91,7 +94,9 @@ def build_chunks(base_dir: Union[str, Path], antipattern_type, group_id):
     else:
         # 构造输出路径：和 JSON 文件在同一目录，命名为 `{project}_{case_id}_{antipattern}_chunk.json`
         chunk_filename = f"{project_name}_{case_id}_{antipattern_type}_chunk.json"
-    output_path = base_dir / chunk_filename
+    output_dir = Path("tmp/chunks")
+    output_dir.mkdir(parents=True, exist_ok=True)  # 自动创建目录
+    output_path = output_dir / chunk_filename
 
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
@@ -101,4 +106,4 @@ def build_chunks(base_dir: Union[str, Path], antipattern_type, group_id):
 
 
 if __name__ == "__main__":
-    build_chunks(Path(DATA_DIR) / "kafka" / "commit_1000" / "6", 0)
+    build_chunks(Path(DATA_DIR) / "kafka" / "commit_1000" / "6", "CH", 0)

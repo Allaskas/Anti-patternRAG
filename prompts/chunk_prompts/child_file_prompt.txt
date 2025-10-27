@@ -7,6 +7,9 @@ Please extract the following structured data (JSON format):
 - Key fields and their usage
 - Key methods and what they do
 
+Subclass code:
+{code}
+
 Expected format:
 
 {{
@@ -19,5 +22,4 @@ Expected format:
   ]
 }}
 
-Subclass code:
-{code}
+

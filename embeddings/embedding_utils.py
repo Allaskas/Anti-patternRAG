@@ -48,10 +48,8 @@ def build_documents(chunks_json: dict, content_key: str) -> List[Document]:
     return all_documents
 
 
-def init_embedding_model(model_name: str, device: str = "cpu", normalize: bool = False, default_task: str = None):
+def init_embedding_model(model_name: str, device: str = "cpu", normalize: bool = False):
     model_kwargs = {"device": device, "trust_remote_code": True}
-    if default_task is not None:
-        model_kwargs["default_task"] = default_task
     return HuggingFaceEmbeddings(
         model_name=model_name,
         model_kwargs=model_kwargs,

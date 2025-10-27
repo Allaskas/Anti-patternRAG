@@ -14,4 +14,6 @@ def run_llm(system_prompt_template: str, user_prompt_template: str, variables: d
     llm = ChatOllama(model=LLM_MODEL, system=system_prompt_template)
 
     chain = prompt | llm | parser
-    return chain.invoke(variables)
+    output = chain.invoke(variables)
+    print(f"LLM output : {output}")
+    return output

@@ -7,6 +7,10 @@ Please analyze the provided Java code and return the following structured JSON:
 - Key fields and their descriptions
 - Key methods and their roles
 
+
+Java source code:
+{code}
+
 Response format:
 
 {{
@@ -20,6 +24,3 @@ Response format:
     ...
   ]
 }}
-
-Java source code:
-{code}

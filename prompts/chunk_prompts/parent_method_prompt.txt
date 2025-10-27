@@ -2,6 +2,10 @@
 You are an expert in analyzing anti-patterns. The following method is defined in a superclass and calls a method from a subclass, which contributes to a Cyclic Hierarchy.
 
 ### USER
+
+Method source code:
+{code}
+
 Please analyze the method and return the following JSON structure:
 
 {{
@@ -13,5 +17,3 @@ Please analyze the method and return the following JSON structure:
   ]
 }}
 
-Method source code:
-{code}

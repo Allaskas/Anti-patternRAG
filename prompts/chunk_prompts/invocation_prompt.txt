@@ -2,6 +2,9 @@
 You are a Java code analysis expert. The following is a method invocation from a superclass to a subclass — a signature of the Cyclic Hierarchy anti-pattern.
 
 ### USER
+Invocation code:
+{code}
+
 Please return the following analysis in JSON format:
 
 {{
@@ -9,5 +12,4 @@ Please return the following analysis in JSON format:
   "cyclic_dependency_explanation": "How does this reflect a cyclic dependency?"
 }}
 
-Invocation code:
-{code}
+
