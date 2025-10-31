@@ -1,5 +1,6 @@
 from typing import List, Union
 
+
 class JinaCodeEmbeddingWrapper:
     """
     Wrapper for HuggingFaceEmbeddings / SentenceTransformer models,
@@ -16,7 +17,7 @@ class JinaCodeEmbeddingWrapper:
     def embed_documents(self, texts: List[str], batch_size: int = 16) -> List[List[float]]:
         embeddings: List[List[float]] = []
         for i in range(0, len(texts), batch_size):
-            batch_texts = texts[i:i+batch_size]
+            batch_texts = texts[i:i + batch_size]
             batch_emb = self._client.encode(batch_texts, task="code")
             # 转成 list[list[float]]
             if hasattr(batch_emb, "tolist"):

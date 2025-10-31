@@ -1,4 +1,5 @@
 import json
+import os
 import pickle
 from pathlib import Path
 from typing import List, Union
@@ -65,26 +66,42 @@ def init_embedding_model(model_name: str, device: str = "cpu", normalize: bool =
 
 
 def store_to_chroma(documents: List[Document], embedding_model,
-                   index_path: str = "faiss_index.idx",
-                   metadata_path: str = "metadata.pkl",
-                   batch_size: int = 2):
+                    type: str,
+                    base_path: str = "vectorstore",
+                    batch_size: int = 2):
     """
     Stores documents into a native FAISS index with batch embedding and metadata support.
 
     Args:
         documents: List of Document objects.
         embedding_model: Object with embed_documents([text]) -> list[float].
-        index_path: Path to save the FAISS index.
-        metadata_path: Path to save the metadata list.
         batch_size: Number of documents processed per batch.
 
     Returns:
         index: FAISS index object.
         metadatas: List of metadata dictionaries corresponding to documents.
+        :param documents:
+        :param type:
+        :param base_path:
     """
     if not documents:
         print("[i] No documents to store.")
         return None, None
+
+    first_meta = documents[0].metadata
+
+    # 构建目标存储路径
+    folder_path = os.path.join(
+        base_path,
+        type,
+        first_meta["antipattern_type"],
+        first_meta["project_name"],
+        first_meta["commit_number"],
+        str(first_meta["id"])
+    )
+    os.makedirs(folder_path, exist_ok=True)
+    index_path = os.path.join(folder_path, "faiss_index.idx")
+    metadata_path = os.path.join(folder_path, "metadata.pkl")
 
     print(f"[i] Generating embeddings for {len(documents)} documents...")
 
@@ -121,6 +138,7 @@ def store_to_chroma(documents: List[Document], embedding_model,
     print(f"[✓] Metadata saved to {metadata_path}")
 
     return index, metadatas
+
 
 def get_persist_dir_from_chunk_path(vector_store_dir: str, chunk_json_path: Path) -> str:
     # 解析倒数四级路径部分

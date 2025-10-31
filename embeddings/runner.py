@@ -16,20 +16,35 @@ def run_embedding_pipeline(chunks_json_path: Union[str, Path]):
         raise FileNotFoundError(f"Chunk JSON file does not exist: {chunks_json_path}")
 
     print(f" start run     build_text_embedding{chunks_json_path} ")
-    result_path = build_text_embedding(chunks_json_path)
+    build_text_embedding(chunks_json_path)
     print(f"✅ run over    build_text_embedding{chunks_json_path} ")
     print(f" start run     build_code_embedding{chunks_json_path} ")
-    result_path = Path(build_code_embedding(chunks_json_path)).parent
+    build_code_embedding(chunks_json_path)
     print(f"✅ run over    build_code_embedding{chunks_json_path} ")
 
-    return result_path
+    return " EMBEDDING OVER "
 
 
-def embedding_all_chunks(base_dir, antipattern_type, mode="ast"):
-    for case_path in iter_case_paths(base_dir, antipattern_type):
-        chunks_json_path = exist_chunk_json(case_path, antipattern_type)
-        if chunks_json_path:
-            run_embedding_pipeline(chunks_json_path)
+def embedding_all_chunks(base_dir, antipattern_type=None, mode="ast"):
+    """
+    遍历 base_dir 下所有 JSON 文件（包括子目录），并对每个 JSON 文件执行 embedding pipeline。
+
+    Args:
+        base_dir: 根目录，递归查找 JSON 文件。
+        antipattern_type: 可选参数，如果传入，可用于日志或过滤（这里暂不做过滤）。
+        mode: 模式参数，传给 pipeline（可扩展）。
+    """
+    json_files = []
+    for root, dirs, files in os.walk(base_dir):
+        for file in files:
+            if file.endswith(".json"):
+                json_files.append(os.path.join(root, file))
+
+    print(f"[i] Found {len(json_files)} JSON files in {base_dir}")
+
+    for json_path in json_files:
+        run_embedding_pipeline(json_path)
+
     return "✅ EMBEDDING OVER"
 
 
