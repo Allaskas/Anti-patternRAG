@@ -1,10 +1,17 @@
 import json
+import pickle
 from pathlib import Path
 from typing import List, Union
-from langchain.schema import Document
-from langchain_community.vectorstores import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
 
+import numpy as np
+from langchain.schema import Document
+import faiss
+from langchain_community.vectorstores import Chroma
+from langchain_community.vectorstores.utils import filter_complex_metadata
+from langchain_huggingface import HuggingFaceEmbeddings
+from tqdm import tqdm
+
+from embeddings import JinaCodeEmbeddingWrapper
 from prompts.prompt_loader import load_prompt
 
 PROMPT_FILE_MAP = {
@@ -57,16 +64,63 @@ def init_embedding_model(model_name: str, device: str = "cpu", normalize: bool =
     )
 
 
-def store_to_chroma(documents: List[Document], embedding_model, persist_dir):
-    vectorstore = Chroma.from_documents(
-        documents=documents,
-        embedding=embedding_model,
-        persist_directory=persist_dir,
-    )
-    vectorstore.persist()
-    print(f"[✓] Stored {len(documents)} documents to Chroma: {persist_dir}")
-    return vectorstore
+def store_to_chroma(documents: List[Document], embedding_model,
+                   index_path: str = "faiss_index.idx",
+                   metadata_path: str = "metadata.pkl",
+                   batch_size: int = 2):
+    """
+    Stores documents into a native FAISS index with batch embedding and metadata support.
 
+    Args:
+        documents: List of Document objects.
+        embedding_model: Object with embed_documents([text]) -> list[float].
+        index_path: Path to save the FAISS index.
+        metadata_path: Path to save the metadata list.
+        batch_size: Number of documents processed per batch.
+
+    Returns:
+        index: FAISS index object.
+        metadatas: List of metadata dictionaries corresponding to documents.
+    """
+    if not documents:
+        print("[i] No documents to store.")
+        return None, None
+
+    print(f"[i] Generating embeddings for {len(documents)} documents...")
+
+    # 生成 embeddings 并保存在 metadata
+    for i in range(0, len(documents), batch_size):
+        batch_docs = documents[i:i + batch_size]
+        batch_texts = [doc.page_content for doc in batch_docs]
+
+        for j, text in enumerate(tqdm(batch_texts,
+                                      desc=f"Embedding batch {i // batch_size + 1}/{(len(documents) + batch_size - 1) // batch_size}",
+                                      leave=False)):
+            emb = embedding_model.embed_documents([text])[0]  # list[float]
+            batch_docs[j].metadata["embedding"] = np.array(emb, dtype=np.float32)
+
+    # 构建 FAISS 索引
+    dim = len(documents[0].metadata["embedding"])
+    index = faiss.IndexFlatL2(dim)
+    embeddings = np.array([doc.metadata["embedding"] for doc in documents], dtype=np.float32)
+
+    # 批量插入 FAISS
+    print("[i] Adding embeddings to FAISS index...")
+    for i in tqdm(range(0, len(embeddings), batch_size), desc="Inserting batches", unit="batch"):
+        batch_embeddings = embeddings[i:i + batch_size]
+        index.add(batch_embeddings)
+
+    # 保存 FAISS 索引
+    faiss.write_index(index, index_path)
+    print(f"[✓] FAISS index saved to {index_path}")
+
+    # 保存 metadata
+    metadatas = [doc.metadata for doc in documents]
+    with open(metadata_path, "wb") as f:
+        pickle.dump(metadatas, f)
+    print(f"[✓] Metadata saved to {metadata_path}")
+
+    return index, metadatas
 
 def get_persist_dir_from_chunk_path(vector_store_dir: str, chunk_json_path: Path) -> str:
     # 解析倒数四级路径部分

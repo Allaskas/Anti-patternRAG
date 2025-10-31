@@ -15,12 +15,13 @@ def run_embedding_pipeline(chunks_json_path: Union[str, Path]):
     if not chunks_json_path.exists():
         raise FileNotFoundError(f"Chunk JSON file does not exist: {chunks_json_path}")
 
+    print(f" start run     build_text_embedding{chunks_json_path} ")
+    result_path = build_text_embedding(chunks_json_path)
+    print(f"✅ run over    build_text_embedding{chunks_json_path} ")
     print(f" start run     build_code_embedding{chunks_json_path} ")
     result_path = Path(build_code_embedding(chunks_json_path)).parent
     print(f"✅ run over    build_code_embedding{chunks_json_path} ")
-    print(f" start run     build_text_embedding{chunks_json_path} ")
-    build_text_embedding(chunks_json_path)
-    print(f"✅ run over    build_text_embedding{chunks_json_path} ")
+
     return result_path
 
 

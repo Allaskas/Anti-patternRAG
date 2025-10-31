@@ -34,6 +34,12 @@ def build_text_embedding(chunks_json_path: Union[str, Path]):
         case _:
             pass
 
-    store_to_chroma(documents, embedding_model, persist_dir=persist_dir)
+    try:
+        store_to_chroma(documents, embedding_model)
+    except Exception as e:
+        print(f"[Error] build_text_embedding failed: {e}", flush=True)
+        raise
+    print("[✓] finish text_code_embedding", flush=True)
+
     return persist_dir
 

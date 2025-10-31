@@ -4,6 +4,7 @@ from typing import Union
 from transformers import AutoTokenizer
 
 from config.settings import CODE_EMBEDDING_MODEL, VECTOR_STORE_CODE_DIR
+from embeddings.JinaCodeEmbeddingWrapper import JinaCodeEmbeddingWrapper
 from embeddings.embedding_utils import (
     load_chunks_from_json,
     build_documents,
@@ -18,7 +19,8 @@ def build_code_embedding(chunks_json_path: Union[str, Path]):
     chunks = load_chunks_from_json(Path(chunks_json_path))
     group_id = chunks["group_id"]
     documents = build_documents(chunks, content_key="ast_subtree")
-    embedding_model = init_embedding_model(CODE_EMBEDDING_MODEL)
+    embedding_model_raw = init_embedding_model(CODE_EMBEDDING_MODEL)
+    embedding_model = JinaCodeEmbeddingWrapper(embedding_model_raw)
     tokenizer = AutoTokenizer.from_pretrained(CODE_EMBEDDING_MODEL, trust_remote_code=True)
     model_max_len = get_max_token_length(tokenizer)
     if group_id < 0:
@@ -29,9 +31,18 @@ def build_code_embedding(chunks_json_path: Union[str, Path]):
         case m if "jinaai/jina-embeddings-v4" in m:
             valid_documents, exceeding_documents = check_documents_exceed_max_len(documents, tokenizer, model_max_len)
             if len(exceeding_documents) > 0:
+                print(f"have exceeding_documents,len: {exceeding_documents}")
                 exceeding_documents = split_ast_documents(exceeding_documents, tokenizer,model_max_len)
+            else:
+                print("donot have exceeding_documents")
             documents = valid_documents + exceeding_documents
         case _:
             pass
-    store_to_chroma(documents, embedding_model, persist_dir=persist_dir)
+    print(f"documents : {documents}")
+    try:
+        store_to_chroma(documents, embedding_model)
+    except Exception as e:
+        print(f"[Error] build_code_embedding failed: {e}", flush=True)
+        raise
+    print("[✓] finish build_code_embedding", flush=True)
     return persist_dir
