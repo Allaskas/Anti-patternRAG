@@ -1,0 +1,10 @@
+{
+    "average_similarity": 0.8803970019022623,
+    "file_scores": {
+        "AbstractDeserializationSchema.java": 0.8750176429748535,
+        "DeserializationSchema.java": 0.9182749390602112,
+        "ResultTypeQueryable.java": 0.8478984236717224
+    },
+    "matched_files_count": 3,
+    "total_before_files": 3
+}

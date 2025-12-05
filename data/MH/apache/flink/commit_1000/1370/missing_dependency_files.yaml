@@ -1,0 +1,1544 @@
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: 'diff --git a/flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java
+    b/flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java
+
+    deleted file mode 100644
+
+    index c11b1567669..00000000000
+
+    --- a/flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java
+
+    +++ /dev/null
+
+    @@ -1,62 +0,0 @@
+
+    -/*
+
+    - * Licensed to the Apache Software Foundation (ASF) under one or more
+
+    - * contributor license agreements.  See the NOTICE file distributed with
+
+    - * this work for additional information regarding copyright ownership.
+
+    - * The ASF licenses this file to You under the Apache License, Version 2.0
+
+    - * (the "License"); you may not use this file except in compliance with
+
+    - * the License.  You may obtain a copy of the License at
+
+    - *
+
+    - *    http://www.apache.org/licenses/LICENSE-2.0
+
+    - *
+
+    - * Unless required by applicable law or agreed to in writing, software
+
+    - * distributed under the License is distributed on an "AS IS" BASIS,
+
+    - * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+    - * See the License for the specific language governing permissions and
+
+    - * limitations under the License.
+
+    - */
+
+    -
+
+    -package org.apache.flink.streaming.util.serialization;
+
+    -
+
+    -import org.apache.flink.annotation.Public;
+
+    -import org.apache.flink.api.java.typeutils.ResultTypeQueryable;
+
+    -
+
+    -import java.io.IOException;
+
+    -import java.io.Serializable;
+
+    -
+
+    -/**
+
+    - * The deserialization schema describes how to turn the byte messages delivered
+    by certain data
+
+    - * sources (for example Apache Kafka) into data types (Java/Scala objects) that
+    are processed by
+
+    - * Flink.
+
+    - *
+
+    - * <p>Note: In most cases, one should start from {@link AbstractDeserializationSchema},
+    which takes
+
+    - * care of producing the return type information automatically.
+
+    - *
+
+    - * @param <T> The type created by the deserialization schema.
+
+    - * @deprecated Use {@link org.apache.flink.api.common.serialization.De
+
+    [...diff truncated...]'
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/AscendingTimestampExtractor.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: 'diff --git a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/AscendingTimestampExtractor.java
+    b/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/AscendingTimestampExtractor.java
+
+    deleted file mode 100644
+
+    index b30cae8efb9..00000000000
+
+    --- a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/AscendingTimestampExtractor.java
+
+    +++ /dev/null
+
+    @@ -1,39 +0,0 @@
+
+    -/*
+
+    - * Licensed to the Apache Software Foundation (ASF) under one
+
+    - * or more contributor license agreements.  See the NOTICE file
+
+    - * distributed with this work for additional information
+
+    - * regarding copyright ownership.  The ASF licenses this file
+
+    - * to you under the Apache License, Version 2.0 (the
+
+    - * "License"); you may not use this file except in compliance
+
+    - * with the License.  You may obtain a copy of the License at
+
+    - *
+
+    - *    http://www.apache.org/licenses/LICENSE-2.0
+
+    - *
+
+    - * Unless required by applicable law or agreed to in writing, software
+
+    - * distributed under the License is distributed on an "AS IS" BASIS,
+
+    - * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+    - * See the License for the specific language governing permissions and
+
+    - * limitations under the License.
+
+    - */
+
+    -
+
+    -package org.apache.flink.streaming.api.functions;
+
+    -
+
+    -import org.apache.flink.annotation.PublicEvolving;
+
+    -
+
+    -/**
+
+    - * A timestamp assigner and watermark generator for streams where timestamps
+    are monotonously
+
+    - * ascending. In this case, the local watermarks for the streams are easy to
+    generate, because they
+
+    - * strictly follow the timestamps.
+
+    - *
+
+    - * <p><b>Note:</b> This is just a deprecated stub class. The actual code for
+    this has moved to
+
+    - * {@link org.apache.flink.streaming.api.functions.timestamps.AscendingTimestampExtractor}.
+
+    - *
+
+    - * @param <T> The type of the elements that this function can extract timestamps
+    from
+
+    - * @deprecated Extend {@link
+
+    - *     org.apache.flink.streaming.api.functions.timestamps.AscendingTimestampExtra
+
+    [...diff truncated...]'
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/IngestionTimeExtractor.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: 'diff --git a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/IngestionTimeExtractor.java
+    b/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/IngestionTimeExtractor.java
+
+    deleted file mode 100644
+
+    index ff2eff57a11..00000000000
+
+    --- a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/IngestionTimeExtractor.java
+
+    +++ /dev/null
+
+    @@ -1,51 +0,0 @@
+
+    -/*
+
+    - * Licensed to the Apache Software Foundation (ASF) under one
+
+    - * or more contributor license agreements.  See the NOTICE file
+
+    - * distributed with this work for additional information
+
+    - * regarding copyright ownership.  The ASF licenses this file
+
+    - * to you under the Apache License, Version 2.0 (the
+
+    - * "License"); you may not use this file except in compliance
+
+    - * with the License.  You may obtain a copy of the License at
+
+    - *
+
+    - *    http://www.apache.org/licenses/LICENSE-2.0
+
+    - *
+
+    - * Unless required by applicable law or agreed to in writing, software
+
+    - * distributed under the License is distributed on an "AS IS" BASIS,
+
+    - * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+    - * See the License for the specific language governing permissions and
+
+    - * limitations under the License.
+
+    - */
+
+    -
+
+    -package org.apache.flink.streaming.api.functions;
+
+    -
+
+    -import org.apache.flink.streaming.api.watermark.Watermark;
+
+    -
+
+    -/**
+
+    - * A timestamp assigner that assigns timestamps based on the machine''s wall
+    clock.
+
+    - *
+
+    - * <p>If this assigner is used after a stream source, it realizes "ingestion
+    time" semantics.
+
+    - *
+
+    - * @param <T> The elements that get timestamps assigned.
+
+    - */
+
+    -@Deprecated
+
+    -public class IngestionTimeExtractor<T> implements AssignerWithPeriodicWatermarks<T>
+    {
+
+    -    private static final long serialVersionUID = -4072216356049069301L;
+
+    -
+
+    -    private long maxTimestamp;
+
+    -
+
+    -    @Override
+
+    -    public long extractTimestamp(T element, long previousElementTimestamp) {
+
+    -        // make sure timestamps are monotonously increasing, even when the system
+    c
+
+    [...diff truncated...]'
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteFormat.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: 'diff --git a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteFormat.java
+    b/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteFormat.java
+
+    deleted file mode 100644
+
+    index e8165263e49..00000000000
+
+    --- a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteFormat.java
+
+    +++ /dev/null
+
+    @@ -1,45 +0,0 @@
+
+    -/*
+
+    - * Licensed to the Apache Software Foundation (ASF) under one or more
+
+    - * contributor license agreements.  See the NOTICE file distributed with
+
+    - * this work for additional information regarding copyright ownership.
+
+    - * The ASF licenses this file to You under the Apache License, Version 2.0
+
+    - * (the "License"); you may not use this file except in compliance with
+
+    - * the License.  You may obtain a copy of the License at
+
+    - *
+
+    - *    http://www.apache.org/licenses/LICENSE-2.0
+
+    - *
+
+    - * Unless required by applicable law or agreed to in writing, software
+
+    - * distributed under the License is distributed on an "AS IS" BASIS,
+
+    - * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+    - * See the License for the specific language governing permissions and
+
+    - * limitations under the License.
+
+    - */
+
+    -
+
+    -package org.apache.flink.streaming.api.functions.sink;
+
+    -
+
+    -import org.apache.flink.annotation.PublicEvolving;
+
+    -
+
+    -import java.io.Serializable;
+
+    -import java.util.ArrayList;
+
+    -
+
+    -/**
+
+    - * Abstract class for formatting the output of the writeAsText and writeAsCsv
+    functions.
+
+    - *
+
+    - * @param <IN> Input tuple type
+
+    - * @deprecated Please use the {@link
+
+    - *     org.apache.flink.streaming.api.functions.sink.filesystem.StreamingFileSink
+    StreamingFileSink}
+
+    - *     for writing to files from a streaming program.
+
+    - */
+
+    -@PublicEvolving
+
+    -@Deprecated
+
+    -public abstract class WriteFormat<IN> implements Serializable {
+
+    -    private static final long serialVersionUID = 1L;
+
+    -
+
+    -    /**
+
+    -     * Writes the contents of tupleList to the file specified by path.
+
+    -     *
+
+    -     * @param path is the path to
+
+    [...diff truncated...]'
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteFormatAsCsv.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: 'diff --git a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteFormatAsCsv.java
+    b/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteFormatAsCsv.java
+
+    deleted file mode 100644
+
+    index 1d03177eb1e..00000000000
+
+    --- a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteFormatAsCsv.java
+
+    +++ /dev/null
+
+    @@ -1,53 +0,0 @@
+
+    -/*
+
+    - * Licensed to the Apache Software Foundation (ASF) under one or more
+
+    - * contributor license agreements.  See the NOTICE file distributed with
+
+    - * this work for additional information regarding copyright ownership.
+
+    - * The ASF licenses this file to You under the Apache License, Version 2.0
+
+    - * (the "License"); you may not use this file except in compliance with
+
+    - * the License.  You may obtain a copy of the License at
+
+    - *
+
+    - *    http://www.apache.org/licenses/LICENSE-2.0
+
+    - *
+
+    - * Unless required by applicable law or agreed to in writing, software
+
+    - * distributed under the License is distributed on an "AS IS" BASIS,
+
+    - * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+    - * See the License for the specific language governing permissions and
+
+    - * limitations under the License.
+
+    - */
+
+    -
+
+    -package org.apache.flink.streaming.api.functions.sink;
+
+    -
+
+    -import org.apache.flink.annotation.PublicEvolving;
+
+    -
+
+    -import java.io.BufferedWriter;
+
+    -import java.io.FileWriter;
+
+    -import java.io.IOException;
+
+    -import java.io.PrintWriter;
+
+    -import java.util.ArrayList;
+
+    -
+
+    -/**
+
+    - * Writes tuples in csv format.
+
+    - *
+
+    - * @param <IN> Input tuple type
+
+    - * @deprecated Please use the {@link
+
+    - *     org.apache.flink.streaming.api.functions.sink.filesystem.StreamingFileSink
+    StreamingFileSink}
+
+    - *     for writing to files from a streaming program.
+
+    - */
+
+    -@PublicEvolving
+
+    -@Deprecated
+
+    -public class WriteFormatAsCsv<IN> extends WriteFormat<IN> {
+
+    -    private static final long serialVersionUID = 1L;
+
+    -
+
+    -    @Override
+
+    -    protected void write(String path, ArrayList<IN> tupleList) {
+
+
+    [...diff truncated...]'
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteFormatAsText.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: "diff --git a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteFormatAsText.java\
+    \ b/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteFormatAsText.java\n\
+    deleted file mode 100644\nindex 980633e09bf..00000000000\n--- a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteFormatAsText.java\n\
+    +++ /dev/null\n@@ -1,52 +0,0 @@\n-/*\n- * Licensed to the Apache Software Foundation\
+    \ (ASF) under one or more\n- * contributor license agreements.  See the NOTICE\
+    \ file distributed with\n- * this work for additional information regarding copyright\
+    \ ownership.\n- * The ASF licenses this file to You under the Apache License,\
+    \ Version 2.0\n- * (the \"License\"); you may not use this file except in compliance\
+    \ with\n- * the License.  You may obtain a copy of the License at\n- *\n- *  \
+    \  http://www.apache.org/licenses/LICENSE-2.0\n- *\n- * Unless required by applicable\
+    \ law or agreed to in writing, software\n- * distributed under the License is\
+    \ distributed on an \"AS IS\" BASIS,\n- * WITHOUT WARRANTIES OR CONDITIONS OF\
+    \ ANY KIND, either express or implied.\n- * See the License for the specific language\
+    \ governing permissions and\n- * limitations under the License.\n- */\n-\n-package\
+    \ org.apache.flink.streaming.api.functions.sink;\n-\n-import org.apache.flink.annotation.PublicEvolving;\n\
+    -\n-import java.io.BufferedWriter;\n-import java.io.FileWriter;\n-import java.io.IOException;\n\
+    -import java.io.PrintWriter;\n-import java.util.ArrayList;\n-\n-/**\n- * Writes\
+    \ tuples in text format.\n- *\n- * @param <IN> Input tuple type\n- * @deprecated\
+    \ Please use the {@link\n- *     org.apache.flink.streaming.api.functions.sink.filesystem.StreamingFileSink\
+    \ StreamingFileSink}\n- *     for writing to files from a streaming program.\n\
+    - */\n-@PublicEvolving\n-@Deprecated\n-public class WriteFormatAsText<IN> extends\
+    \ WriteFormat<IN> {\n-    private static final long serialVersionUID = 1L;\n-\n\
+    -    @Override\n-    public void write(String path, ArrayList<IN> tupleList) \n\
+    [...diff truncated...]"
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteSinkFunction.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: 'diff --git a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteSinkFunction.java
+    b/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteSinkFunction.java
+
+    deleted file mode 100644
+
+    index 0c25bcf11de..00000000000
+
+    --- a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteSinkFunction.java
+
+    +++ /dev/null
+
+    @@ -1,92 +0,0 @@
+
+    -/*
+
+    - * Licensed to the Apache Software Foundation (ASF) under one or more
+
+    - * contributor license agreements.  See the NOTICE file distributed with
+
+    - * this work for additional information regarding copyright ownership.
+
+    - * The ASF licenses this file to You under the Apache License, Version 2.0
+
+    - * (the "License"); you may not use this file except in compliance with
+
+    - * the License.  You may obtain a copy of the License at
+
+    - *
+
+    - *    http://www.apache.org/licenses/LICENSE-2.0
+
+    - *
+
+    - * Unless required by applicable law or agreed to in writing, software
+
+    - * distributed under the License is distributed on an "AS IS" BASIS,
+
+    - * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+    - * See the License for the specific language governing permissions and
+
+    - * limitations under the License.
+
+    - */
+
+    -
+
+    -package org.apache.flink.streaming.api.functions.sink;
+
+    -
+
+    -import org.apache.flink.annotation.PublicEvolving;
+
+    -
+
+    -import java.io.FileNotFoundException;
+
+    -import java.io.PrintWriter;
+
+    -import java.util.ArrayList;
+
+    -
+
+    -/**
+
+    - * Simple implementation of the SinkFunction writing tuples as simple text to
+    the file specified by
+
+    - * path. Tuples are collected to a list and written to the file periodically.
+    The file specified by
+
+    - * path is created if it does not exist, cleared if it exists before the writing.
+
+    - *
+
+    - * @param <IN> Input tuple type
+
+    - * @deprecated Please use the {@link
+
+    - *     org.apache.flink.streaming.api.functions.sink.filesystem.StreamingFileSink
+    StreamingFileSink}
+
+    - *     for writing to files from a streaming program.
+
+    - */
+
+    -@PublicEvolving
+
+    -@Depr
+
+    [...diff truncated...]'
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteSinkFunctionByMillis.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: 'diff --git a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteSinkFunctionByMillis.java
+    b/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteSinkFunctionByMillis.java
+
+    deleted file mode 100644
+
+    index a38d7301785..00000000000
+
+    --- a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/sink/WriteSinkFunctionByMillis.java
+
+    +++ /dev/null
+
+    @@ -1,54 +0,0 @@
+
+    -/*
+
+    - * Licensed to the Apache Software Foundation (ASF) under one or more
+
+    - * contributor license agreements.  See the NOTICE file distributed with
+
+    - * this work for additional information regarding copyright ownership.
+
+    - * The ASF licenses this file to You under the Apache License, Version 2.0
+
+    - * (the "License"); you may not use this file except in compliance with
+
+    - * the License.  You may obtain a copy of the License at
+
+    - *
+
+    - *    http://www.apache.org/licenses/LICENSE-2.0
+
+    - *
+
+    - * Unless required by applicable law or agreed to in writing, software
+
+    - * distributed under the License is distributed on an "AS IS" BASIS,
+
+    - * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+    - * See the License for the specific language governing permissions and
+
+    - * limitations under the License.
+
+    - */
+
+    -
+
+    -package org.apache.flink.streaming.api.functions.sink;
+
+    -
+
+    -import org.apache.flink.annotation.PublicEvolving;
+
+    -
+
+    -/**
+
+    - * Implementation of WriteSinkFunction. Writes tuples to file in every millis
+    milliseconds.
+
+    - *
+
+    - * @param <IN> Input tuple type
+
+    - * @deprecated Please use the {@link
+
+    - *     org.apache.flink.streaming.api.functions.sink.filesystem.StreamingFileSink
+    StreamingFileSink}
+
+    - *     for writing to files from a streaming program.
+
+    - */
+
+    -@PublicEvolving
+
+    -@Deprecated
+
+    -public class WriteSinkFunctionByMillis<IN> extends WriteSinkFunction<IN> {
+
+    -    private static final long serialVersionUID = 1L;
+
+    -
+
+    -    private final long millis;
+
+    -    private long lastTime;
+
+    -
+
+    -    public WriteSinkFunctionByMillis(String path, WriteFormat<IN>
+
+    [...diff truncated...]'
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/source/MessageAcknowledgingSourceBase.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: 'diff --git a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/source/MessageAcknowledgingSourceBase.java
+    b/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/source/MessageAcknowledgingSourceBase.java
+
+    deleted file mode 100644
+
+    index 55db14135a0..00000000000
+
+    --- a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/source/MessageAcknowledgingSourceBase.java
+
+    +++ /dev/null
+
+    @@ -1,275 +0,0 @@
+
+    -/*
+
+    - * Licensed to the Apache Software Foundation (ASF) under one
+
+    - * or more contributor license agreements.  See the NOTICE file
+
+    - * distributed with this work for additional information
+
+    - * regarding copyright ownership.  The ASF licenses this file
+
+    - * to you under the Apache License, Version 2.0 (the
+
+    - * "License"); you may not use this file except in compliance
+
+    - * with the License.  You may obtain a copy of the License at
+
+    - *
+
+    - *     http://www.apache.org/licenses/LICENSE-2.0
+
+    - *
+
+    - * Unless required by applicable law or agreed to in writing, software
+
+    - * distributed under the License is distributed on an "AS IS" BASIS,
+
+    - * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+    - * See the License for the specific language governing permissions and
+
+    - * limitations under the License.
+
+    - */
+
+    -
+
+    -package org.apache.flink.streaming.api.functions.source;
+
+    -
+
+    -import org.apache.flink.annotation.PublicEvolving;
+
+    -import org.apache.flink.api.common.serialization.SerializerConfigImpl;
+
+    -import org.apache.flink.api.common.state.CheckpointListener;
+
+    -import org.apache.flink.api.common.state.ListState;
+
+    -import org.apache.flink.api.common.state.ListStateDescriptor;
+
+    -import org.apache.flink.api.common.typeinfo.TypeInformation;
+
+    -import org.apache.flink.api.common.typeutils.TypeSerializer;
+
+    -import org.apache.flink.api.java.tuple.Tuple2;
+
+    -import org.apache.flink.api.java.typeutils.TypeExtractor;
+
+    -import org.apache.flink.runtime.state.FunctionInitializationContext;
+
+    -import org.apache.flink.runtime.state.Functio
+
+    [...diff truncated...]'
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/source/MultipleIdsMessageAcknowledgingSourceBase.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: 'diff --git a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/source/MultipleIdsMessageAcknowledgingSourceBase.java
+    b/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/source/MultipleIdsMessageAcknowledgingSourceBase.java
+
+    deleted file mode 100644
+
+    index aec109eeb58..00000000000
+
+    --- a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/source/MultipleIdsMessageAcknowledgingSourceBase.java
+
+    +++ /dev/null
+
+    @@ -1,168 +0,0 @@
+
+    -/*
+
+    - * Licensed to the Apache Software Foundation (ASF) under one
+
+    - * or more contributor license agreements.  See the NOTICE file
+
+    - * distributed with this work for additional information
+
+    - * regarding copyright ownership.  The ASF licenses this file
+
+    - * to you under the Apache License, Version 2.0 (the
+
+    - * "License"); you may not use this file except in compliance
+
+    - * with the License.  You may obtain a copy of the License at
+
+    - *
+
+    - *     http://www.apache.org/licenses/LICENSE-2.0
+
+    - *
+
+    - * Unless required by applicable law or agreed to in writing, software
+
+    - * distributed under the License is distributed on an "AS IS" BASIS,
+
+    - * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+    - * See the License for the specific language governing permissions and
+
+    - * limitations under the License.
+
+    - */
+
+    -
+
+    -package org.apache.flink.streaming.api.functions.source;
+
+    -
+
+    -import org.apache.flink.annotation.PublicEvolving;
+
+    -import org.apache.flink.api.common.typeinfo.TypeInformation;
+
+    -import org.apache.flink.api.java.tuple.Tuple2;
+
+    -import org.apache.flink.configuration.Configuration;
+
+    -import org.apache.flink.runtime.state.FunctionSnapshotContext;
+
+    -
+
+    -import org.slf4j.Logger;
+
+    -import org.slf4j.LoggerFactory;
+
+    -
+
+    -import java.util.ArrayDeque;
+
+    -import java.util.ArrayList;
+
+    -import java.util.Deque;
+
+    -import java.util.Iterator;
+
+    -import java.util.List;
+
+    -import java.util.Set;
+
+    -
+
+    -/**
+
+    - * Abstract base class for data sources that receive elements from a message
+    queue and acknowledge
+
+    - * the
+
+    [...diff truncated...]'
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/windowing/RichProcessAllWindowFunction.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: 'diff --git a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/windowing/RichProcessAllWindowFunction.java
+    b/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/windowing/RichProcessAllWindowFunction.java
+
+    deleted file mode 100644
+
+    index a20469e8374..00000000000
+
+    --- a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/windowing/RichProcessAllWindowFunction.java
+
+    +++ /dev/null
+
+    @@ -1,39 +0,0 @@
+
+    -/*
+
+    - * Licensed to the Apache Software Foundation (ASF) under one
+
+    - * or more contributor license agreements.  See the NOTICE file
+
+    - * distributed with this work for additional information
+
+    - * regarding copyright ownership.  The ASF licenses this file
+
+    - * to you under the Apache License, Version 2.0 (the
+
+    - * "License"); you may not use this file except in compliance
+
+    - * with the License.  You may obtain a copy of the License at
+
+    - *
+
+    - *     http://www.apache.org/licenses/LICENSE-2.0
+
+    - *
+
+    - * Unless required by applicable law or agreed to in writing, software
+
+    - * distributed under the License is distributed on an "AS IS" BASIS,
+
+    - * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+    - * See the License for the specific language governing permissions and
+
+    - * limitations under the License.
+
+    - */
+
+    -
+
+    -package org.apache.flink.streaming.api.functions.windowing;
+
+    -
+
+    -import org.apache.flink.annotation.PublicEvolving;
+
+    -import org.apache.flink.streaming.api.windowing.windows.Window;
+
+    -
+
+    -/**
+
+    - * Base rich abstract class for functions that are evaluated over keyed (grouped)
+    windows using a
+
+    - * context for passing extra information.
+
+    - *
+
+    - * @param <IN> The type of the input value.
+
+    - * @param <OUT> The type of the output value.
+
+    - * @param <W> The type of {@code Window} that this window function can be applied
+    on.
+
+    - * @deprecated use {@link ProcessAllWindowFunction} instead
+
+    - */
+
+    -@PublicEvolving
+
+    -@Deprecated
+
+    -public abstract class RichProcessAllWindowFunction<IN, OUT, W extends Window>
+
+    -        extends Pro
+
+    [...diff truncated...]'
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/windowing/RichProcessWindowFunction.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: "diff --git a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/windowing/RichProcessWindowFunction.java\
+    \ b/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/windowing/RichProcessWindowFunction.java\n\
+    deleted file mode 100644\nindex 915d0e76143..00000000000\n--- a/flink-streaming-java/src/main/java/org/apache/flink/streaming/api/functions/windowing/RichProcessWindowFunction.java\n\
+    +++ /dev/null\n@@ -1,40 +0,0 @@\n-/*\n- * Licensed to the Apache Software Foundation\
+    \ (ASF) under one\n- * or more contributor license agreements.  See the NOTICE\
+    \ file\n- * distributed with this work for additional information\n- * regarding\
+    \ copyright ownership.  The ASF licenses this file\n- * to you under the Apache\
+    \ License, Version 2.0 (the\n- * \"License\"); you may not use this file except\
+    \ in compliance\n- * with the License.  You may obtain a copy of the License at\n\
+    - *\n- *     http://www.apache.org/licenses/LICENSE-2.0\n- *\n- * Unless required\
+    \ by applicable law or agreed to in writing, software\n- * distributed under the\
+    \ License is distributed on an \"AS IS\" BASIS,\n- * WITHOUT WARRANTIES OR CONDITIONS\
+    \ OF ANY KIND, either express or implied.\n- * See the License for the specific\
+    \ language governing permissions and\n- * limitations under the License.\n- */\n\
+    -\n-package org.apache.flink.streaming.api.functions.windowing;\n-\n-import org.apache.flink.annotation.PublicEvolving;\n\
+    -import org.apache.flink.streaming.api.windowing.windows.Window;\n-\n-/**\n- *\
+    \ Base rich abstract class for functions that are evaluated over keyed (grouped)\
+    \ windows using a\n- * context for passing extra information.\n- *\n- * @param\
+    \ <IN> The type of the input value.\n- * @param <OUT> The type of the output value.\n\
+    - * @param <KEY> The type of the key.\n- * @param <W> The type of {@code Window}\
+    \ that this window function can be applied on.\n- * @deprecated use {@link ProcessWindowFunction}\
+    \ instead\n- */\n-@PublicEvolving\n-@Deprecated\n-public abstract class RichProcessWindowFunction<IN,\
+    \ OUT, KEY, W extends \n[...diff truncated...]"
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/AbstractDeserializationSchema.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: 'diff --git a/flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/AbstractDeserializationSchema.java
+    b/flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/AbstractDeserializationSchema.java
+
+    deleted file mode 100644
+
+    index 16fb37be984..00000000000
+
+    --- a/flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/AbstractDeserializationSchema.java
+
+    +++ /dev/null
+
+    @@ -1,43 +0,0 @@
+
+    -/*
+
+    - * Licensed to the Apache Software Foundation (ASF) under one
+
+    - * or more contributor license agreements.  See the NOTICE file
+
+    - * distributed with this work for additional information
+
+    - * regarding copyright ownership.  The ASF licenses this file
+
+    - * to you under the Apache License, Version 2.0 (the
+
+    - * "License"); you may not use this file except in compliance
+
+    - * with the License.  You may obtain a copy of the License at
+
+    - *
+
+    - * http://www.apache.org/licenses/LICENSE-2.0
+
+    - *
+
+    - * Unless required by applicable law or agreed to in writing, software
+
+    - * distributed under the License is distributed on an "AS IS" BASIS,
+
+    - * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+    - * See the License for the specific language governing permissions and
+
+    - * limitations under the License.
+
+    - */
+
+    -
+
+    -package org.apache.flink.streaming.util.serialization;
+
+    -
+
+    -import org.apache.flink.annotation.PublicEvolving;
+
+    -
+
+    -/**
+
+    - * The deserialization schema describes how to turn the byte messages delivered
+    by certain data
+
+    - * sources (for example Apache Kafka) into data types (Java/Scala objects) that
+    are processed by
+
+    - * Flink.
+
+    - *
+
+    - * <p>This base variant of the deserialization schema produces the type information
+    automatically by
+
+    - * extracting it from the generic class arguments.
+
+    - *
+
+    - * @param <T> The type created by the deserialization schema.
+
+    - * @deprecated Use {@link org.apache.flink.api.common.serialization.AbstractDeserializationSchema}
+
+    - *     instead.
+
+    - */
+
+    -@Deprecated
+
+    -@PublicEvolving
+
+    -@SuppressWarnings("dep
+
+    [...diff truncated...]'
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SerializationSchema.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: 'diff --git a/flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SerializationSchema.java
+    b/flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SerializationSchema.java
+
+    deleted file mode 100644
+
+    index 8d94df87103..00000000000
+
+    --- a/flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SerializationSchema.java
+
+    +++ /dev/null
+
+    @@ -1,45 +0,0 @@
+
+    -/*
+
+    - * Licensed to the Apache Software Foundation (ASF) under one or more
+
+    - * contributor license agreements.  See the NOTICE file distributed with
+
+    - * this work for additional information regarding copyright ownership.
+
+    - * The ASF licenses this file to You under the Apache License, Version 2.0
+
+    - * (the "License"); you may not use this file except in compliance with
+
+    - * the License.  You may obtain a copy of the License at
+
+    - *
+
+    - *    http://www.apache.org/licenses/LICENSE-2.0
+
+    - *
+
+    - * Unless required by applicable law or agreed to in writing, software
+
+    - * distributed under the License is distributed on an "AS IS" BASIS,
+
+    - * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+    - * See the License for the specific language governing permissions and
+
+    - * limitations under the License.
+
+    - */
+
+    -
+
+    -package org.apache.flink.streaming.util.serialization;
+
+    -
+
+    -import org.apache.flink.annotation.Public;
+
+    -
+
+    -import java.io.Serializable;
+
+    -
+
+    -/**
+
+    - * The serialization schema describes how to turn a data object into a different
+    serialized
+
+    - * representation. Most data sinks (for example Apache Kafka) require the data
+    to be handed to them
+
+    - * in a specific format (for example as byte strings).
+
+    - *
+
+    - * @param <T> The type to be serialized.
+
+    - * @deprecated Use {@link org.apache.flink.api.common.serialization.SerializationSchema}
+    instead.
+
+    - */
+
+    -@Public
+
+    -@Deprecated
+
+    -public interface SerializationSchema<T>
+
+    -        extends org.apache.flink.api.common.serialization.SerializationSchema<T>,
+    Serializable {
+
+    -
+
+    -    /**
+
+    -     * Serializes the incoming element to
+
+    [...diff truncated...]'
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SimpleStringSchema.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: "diff --git a/flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SimpleStringSchema.java\
+    \ b/flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SimpleStringSchema.java\n\
+    deleted file mode 100644\nindex d91d51df3f3..00000000000\n--- a/flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SimpleStringSchema.java\n\
+    +++ /dev/null\n@@ -1,52 +0,0 @@\n-/*\n- * Licensed to the Apache Software Foundation\
+    \ (ASF) under one or more\n- * contributor license agreements.  See the NOTICE\
+    \ file distributed with\n- * this work for additional information regarding copyright\
+    \ ownership.\n- * The ASF licenses this file to You under the Apache License,\
+    \ Version 2.0\n- * (the \"License\"); you may not use this file except in compliance\
+    \ with\n- * the License.  You may obtain a copy of the License at\n- *\n- *  \
+    \  http://www.apache.org/licenses/LICENSE-2.0\n- *\n- * Unless required by applicable\
+    \ law or agreed to in writing, software\n- * distributed under the License is\
+    \ distributed on an \"AS IS\" BASIS,\n- * WITHOUT WARRANTIES OR CONDITIONS OF\
+    \ ANY KIND, either express or implied.\n- * See the License for the specific language\
+    \ governing permissions and\n- * limitations under the License.\n- */\n-\n-package\
+    \ org.apache.flink.streaming.util.serialization;\n-\n-import org.apache.flink.annotation.PublicEvolving;\n\
+    -\n-import java.nio.charset.Charset;\n-\n-/**\n- * Very simple serialization schema\
+    \ for strings.\n- *\n- * <p>By default, the serializer uses \"UTF-8\" for string/byte\
+    \ conversion.\n- *\n- * @deprecated Use {@link org.apache.flink.api.common.serialization.SimpleStringSchema}\
+    \ instead.\n- */\n-@PublicEvolving\n-@Deprecated\n-@SuppressWarnings(\"deprecation\"\
+    )\n-public class SimpleStringSchema extends org.apache.flink.api.common.serialization.SimpleStringSchema\n\
+    -        implements SerializationSchema<String>, DeserializationSchema<String>\
+    \ {\n-\n-    private static final long serialVersionUID = 1L;\n-\n-    public\
+    \ SimpleStringSchema() {\n-        super();\n-    }\n-\n- \n[...diff truncated...]"
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/TypeInformationSerializationSchema.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: 'diff --git a/flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/TypeInformationSerializationSchema.java
+    b/flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/TypeInformationSerializationSchema.java
+
+    deleted file mode 100644
+
+    index 01ab0728f26..00000000000
+
+    --- a/flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/TypeInformationSerializationSchema.java
+
+    +++ /dev/null
+
+    @@ -1,51 +0,0 @@
+
+    -/*
+
+    - * Licensed to the Apache Software Foundation (ASF) under one
+
+    - * or more contributor license agreements.  See the NOTICE file
+
+    - * distributed with this work for additional information
+
+    - * regarding copyright ownership.  The ASF licenses this file
+
+    - * to you under the Apache License, Version 2.0 (the
+
+    - * "License"); you may not use this file except in compliance
+
+    - * with the License.  You may obtain a copy of the License at
+
+    - *
+
+    - *     http://www.apache.org/licenses/LICENSE-2.0
+
+    - *
+
+    - * Unless required by applicable law or agreed to in writing, software
+
+    - * distributed under the License is distributed on an "AS IS" BASIS,
+
+    - * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+    - * See the License for the specific language governing permissions and
+
+    - * limitations under the License.
+
+    - */
+
+    -
+
+    -package org.apache.flink.streaming.util.serialization;
+
+    -
+
+    -import org.apache.flink.annotation.Public;
+
+    -import org.apache.flink.api.common.ExecutionConfig;
+
+    -import org.apache.flink.api.common.typeinfo.TypeInformation;
+
+    -
+
+    -/**
+
+    - * A serialization and deserialization schema that uses Flink''s serialization
+    stack to transform
+
+    - * typed from and to byte arrays.
+
+    - *
+
+    - * @param <T> The type to be serialized.
+
+    - * @deprecated Use {@link
+
+    - *     org.apache.flink.api.common.serialization.TypeInformationSerializationSchema}
+    instead.
+
+    - */
+
+    -@Public
+
+    -@Deprecated
+
+    -@SuppressWarnings("deprecation")
+
+    -public class TypeInformationSerializationSchema<T>
+
+    -        extends org.apache.flink.api.common.serialization.TypeInf
+
+    [...diff truncated...]'
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/test/java/org/apache/flink/streaming/api/functions/AscendingTimestampExtractorTest.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: 'diff --git a/flink-streaming-java/src/test/java/org/apache/flink/streaming/api/functions/AscendingTimestampExtractorTest.java
+    b/flink-streaming-java/src/test/java/org/apache/flink/streaming/api/functions/AscendingTimestampExtractorTest.java
+
+    deleted file mode 100644
+
+    index e97020165e9..00000000000
+
+    --- a/flink-streaming-java/src/test/java/org/apache/flink/streaming/api/functions/AscendingTimestampExtractorTest.java
+
+    +++ /dev/null
+
+    @@ -1,115 +0,0 @@
+
+    -/*
+
+    - * Licensed to the Apache Software Foundation (ASF) under one
+
+    - * or more contributor license agreements.  See the NOTICE file
+
+    - * distributed with this work for additional information
+
+    - * regarding copyright ownership.  The ASF licenses this file
+
+    - * to you under the Apache License, Version 2.0 (the
+
+    - * "License"); you may not use this file except in compliance
+
+    - * with the License.  You may obtain a copy of the License at
+
+    - *
+
+    - *    http://www.apache.org/licenses/LICENSE-2.0
+
+    - *
+
+    - * Unless required by applicable law or agreed to in writing, software
+
+    - * distributed under the License is distributed on an "AS IS" BASIS,
+
+    - * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+    - * See the License for the specific language governing permissions and
+
+    - * limitations under the License.
+
+    - */
+
+    -
+
+    -package org.apache.flink.streaming.api.functions;
+
+    -
+
+    -import org.apache.flink.streaming.api.functions.timestamps.AscendingTimestampExtractor;
+
+    -
+
+    -import org.junit.jupiter.api.Test;
+
+    -
+
+    -import static org.assertj.core.api.Assertions.assertThat;
+
+    -import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+    -
+
+    -/** Tests for {@link AscendingTimestampExtractor}. */
+
+    -class AscendingTimestampExtractorTest {
+
+    -
+
+    -    @Test
+
+    -    void testWithFailingHandler() {
+
+    -        AscendingTimestampExtractor<Long> extractor =
+
+    -                new LongExtractor()
+
+    -                        .withViolationHandler(new AscendingTimestampExtractor.FailingHandler());
+
+    -
+
+    -        runValidTests(extractor);
+
+    -        assertThatThrownBy(() -> runInvalidT
+
+    [...diff truncated...]'
+- id: '1370'
+  commit_id: 0c5f96c0a498461c8fffa18848e003bf996c2fae
+  missing_file: flink-streaming-java/src/test/java/org/apache/flink/streaming/api/functions/IngestionTimeExtractorTest.java
+  author: Weijie Guo <reswqa@163.com>
+  date: Thu Aug 29 17:31:32 2024 +0800
+  message: '[FLINK-36346][API] Remove deprecated API in flink-streaming-java module'
+  filtered_diff: 'diff --git a/flink-streaming-java/src/test/java/org/apache/flink/streaming/api/functions/IngestionTimeExtractorTest.java
+    b/flink-streaming-java/src/test/java/org/apache/flink/streaming/api/functions/IngestionTimeExtractorTest.java
+
+    deleted file mode 100644
+
+    index 81936cd272b..00000000000
+
+    --- a/flink-streaming-java/src/test/java/org/apache/flink/streaming/api/functions/IngestionTimeExtractorTest.java
+
+    +++ /dev/null
+
+    @@ -1,68 +0,0 @@
+
+    -/*
+
+    - * Licensed to the Apache Software Foundation (ASF) under one
+
+    - * or more contributor license agreements.  See the NOTICE file
+
+    - * distributed with this work for additional information
+
+    - * regarding copyright ownership.  The ASF licenses this file
+
+    - * to you under the Apache License, Version 2.0 (the
+
+    - * "License"); you may not use this file except in compliance
+
+    - * with the License.  You may obtain a copy of the License at
+
+    - *
+
+    - * http://www.apache.org/licenses/LICENSE-2.0
+
+    - *
+
+    - * Unless required by applicable law or agreed to in writing, software
+
+    - * distributed under the License is distributed on an "AS IS" BASIS,
+
+    - * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+    - * See the License for the specific language governing permissions and
+
+    - * limitations under the License.
+
+    - */
+
+    -
+
+    -package org.apache.flink.streaming.api.functions;
+
+    -
+
+    -import org.apache.flink.streaming.api.watermark.Watermark;
+
+    -
+
+    -import org.junit.jupiter.api.Test;
+
+    -
+
+    -import static org.assertj.core.api.Assertions.assertThat;
+
+    -
+
+    -/** Tests for {@link IngestionTimeExtractor}. */
+
+    -class IngestionTimeExtractorTest {
+
+    -
+
+    -    @Test
+
+    -    void testMonotonousTimestamps() {
+
+    -        AssignerWithPeriodicWatermarks<String> assigner = new IngestionTimeExtractor<>();
+
+    -
+
+    -        long maxRecordSoFar = 0L;
+
+    -        long maxWatermarkSoFar = 0L;
+
+    -
+
+    -        for (int i = 0; i < 1343; i++) {
+
+    -            if (i % 7 == 1) {
+
+    -                Watermark mark = assigner.getCurrentWatermark();
+
+    -                assertThat(mark).isNotNull();
+
+    -
+
+    -                // increasing watermar
+
+    [...diff truncated...]'

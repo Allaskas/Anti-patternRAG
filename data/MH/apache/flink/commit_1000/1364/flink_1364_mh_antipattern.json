@@ -1,0 +1,25 @@
+{
+  "paths": [
+    [
+      "org.apache.flink.streaming.util.serialization.TypeInformationSerializationSchema -> org.apache.flink.streaming.util.serialization.DeserializationSchema (Implement)",
+      "org.apache.flink.streaming.util.serialization.DeserializationSchema -> org.apache.flink.api.java.typeutils.ResultTypeQueryable (Inherit)"
+    ],
+    [
+      "org.apache.flink.streaming.util.serialization.TypeInformationSerializationSchema -> org.apache.flink.streaming.util.serialization.DeserializationSchema (Implement)",
+      "org.apache.flink.streaming.util.serialization.DeserializationSchema -> org.apache.flink.api.common.serialization.DeserializationSchema (Inherit)",
+      "org.apache.flink.api.common.serialization.DeserializationSchema -> org.apache.flink.api.java.typeutils.ResultTypeQueryable (Inherit)"
+    ],
+    [
+      "org.apache.flink.streaming.util.serialization.TypeInformationSerializationSchema -> org.apache.flink.api.common.serialization.TypeInformationSerializationSchema (Inherit)",
+      "org.apache.flink.api.common.serialization.TypeInformationSerializationSchema -> org.apache.flink.api.common.serialization.DeserializationSchema (Implement)",
+      "org.apache.flink.api.common.serialization.DeserializationSchema -> org.apache.flink.api.java.typeutils.ResultTypeQueryable (Inherit)"
+    ]
+  ],
+  "files": [
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/DeserializationSchema.java",
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/TypeInformationSerializationSchema.java",
+    "flink-core/src/main/java/org/apache/flink/api/java/typeutils/ResultTypeQueryable.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/TypeInformationSerializationSchema.java"
+  ]
+}

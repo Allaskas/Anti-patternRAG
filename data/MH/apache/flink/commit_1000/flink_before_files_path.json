@@ -1,0 +1,79 @@
+{
+  "1148": [
+    "flink-core/src/main/java/org/apache/flink/api/common/state/CheckpointListener.java",
+    "flink-runtime/src/main/java/org/apache/flink/streaming/api/operators/AbstractStreamOperator.java",
+    "flink-runtime/src/main/java/org/apache/flink/streaming/api/operators/OneInputStreamOperator.java",
+    "flink-runtime/src/main/java/org/apache/flink/streaming/api/operators/StreamOperator.java",
+    "flink-streaming-java/src/test/java/org/apache/flink/streaming/runtime/operators/sink/SinkWriterOperatorTestBase.java"
+  ],
+  "1149": [
+    "flink-runtime/src/main/java/org/apache/flink/streaming/api/operators/AbstractStreamOperator.java",
+    "flink-runtime/src/main/java/org/apache/flink/streaming/api/operators/KeyContext.java",
+    "flink-runtime/src/main/java/org/apache/flink/streaming/api/operators/OneInputStreamOperator.java",
+    "flink-runtime/src/main/java/org/apache/flink/streaming/api/operators/StreamOperator.java",
+    "flink-streaming-java/src/test/java/org/apache/flink/streaming/runtime/operators/sink/SinkWriterOperatorTestBase.java"
+  ],
+  "1150": [
+    "flink-runtime/src/main/java/org/apache/flink/streaming/api/operators/AbstractStreamOperator.java",
+    "flink-runtime/src/main/java/org/apache/flink/streaming/api/operators/OneInputStreamOperator.java",
+    "flink-runtime/src/main/java/org/apache/flink/streaming/api/operators/StreamOperator.java",
+    "flink-runtime/src/main/java/org/apache/flink/streaming/api/operators/YieldingOperator.java",
+    "flink-streaming-java/src/test/java/org/apache/flink/streaming/runtime/operators/sink/SinkWriterOperatorTestBase.java"
+  ],
+  "1362": [
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/SerializationSchema.java",
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/TypeInformationSerializationSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SerializationSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/TypeInformationSerializationSchema.java"
+  ],
+  "1363": [
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/DeserializationSchema.java",
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/TypeInformationSerializationSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/TypeInformationSerializationSchema.java"
+  ],
+  "1364": [
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/DeserializationSchema.java",
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/TypeInformationSerializationSchema.java",
+    "flink-core/src/main/java/org/apache/flink/api/java/typeutils/ResultTypeQueryable.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/TypeInformationSerializationSchema.java"
+  ],
+  "1365": [
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/DeserializationSchema.java",
+    "flink-core/src/main/java/org/apache/flink/api/java/typeutils/ResultTypeQueryable.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java"
+  ],
+  "1366": [
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/AbstractDeserializationSchema.java",
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/DeserializationSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/AbstractDeserializationSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java"
+  ],
+  "1367": [
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/AbstractDeserializationSchema.java",
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/DeserializationSchema.java",
+    "flink-core/src/main/java/org/apache/flink/api/java/typeutils/ResultTypeQueryable.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/AbstractDeserializationSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java"
+  ],
+  "1368": [
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/SerializationSchema.java",
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/SimpleStringSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SerializationSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SimpleStringSchema.java"
+  ],
+  "1369": [
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/DeserializationSchema.java",
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/SimpleStringSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SimpleStringSchema.java"
+  ],
+  "1370": [
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/DeserializationSchema.java",
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/SimpleStringSchema.java",
+    "flink-core/src/main/java/org/apache/flink/api/java/typeutils/ResultTypeQueryable.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SimpleStringSchema.java"
+  ]
+}

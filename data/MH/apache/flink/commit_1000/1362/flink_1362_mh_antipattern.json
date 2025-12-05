@@ -1,0 +1,18 @@
+{
+  "paths": [
+    [
+      "org.apache.flink.streaming.util.serialization.TypeInformationSerializationSchema -> org.apache.flink.api.common.serialization.TypeInformationSerializationSchema (Inherit)",
+      "org.apache.flink.api.common.serialization.TypeInformationSerializationSchema -> org.apache.flink.api.common.serialization.SerializationSchema (Implement)"
+    ],
+    [
+      "org.apache.flink.streaming.util.serialization.TypeInformationSerializationSchema -> org.apache.flink.streaming.util.serialization.SerializationSchema (Implement)",
+      "org.apache.flink.streaming.util.serialization.SerializationSchema -> org.apache.flink.api.common.serialization.SerializationSchema (Inherit)"
+    ]
+  ],
+  "files": [
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/SerializationSchema.java",
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/TypeInformationSerializationSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SerializationSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/TypeInformationSerializationSchema.java"
+  ]
+}

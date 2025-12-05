@@ -1,0 +1,133 @@
+{
+  "id": 1365,
+  "start": {
+    "object": "org.apache.flink.streaming.util.serialization.DeserializationSchema",
+    "file": "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java",
+    "modifier": "public",
+    "location": {
+      "endLine": 62,
+      "endColumn": 0,
+      "startColumn": 0,
+      "startLine": 26
+    }
+  },
+  "end": {
+    "object": "org.apache.flink.api.java.typeutils.ResultTypeQueryable",
+    "file": "flink-core/src/main/java/org/apache/flink/api/java/typeutils/ResultTypeQueryable.java",
+    "modifier": "public",
+    "location": {
+      "endLine": 39,
+      "endColumn": 0,
+      "startColumn": 0,
+      "startLine": 24
+    }
+  },
+  "multipath": [
+    [
+      {
+        "fromEntityId": 455430,
+        "fromEntity": "org.apache.flink.streaming.util.serialization.DeserializationSchema",
+        "fromEntityType": "Interface",
+        "fromEntityFile": "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java",
+        "fromEntityModifier": "public",
+        "fromEntityLocation": {
+          "endLine": 62,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 26
+        },
+        "fromParentId": 455430,
+        "relationType": "Inherit",
+        "toEntityId": 194465,
+        "toEntity": "org.apache.flink.api.java.typeutils.ResultTypeQueryable",
+        "toEntityType": "Interface",
+        "toEntityFile": "flink-core/src/main/java/org/apache/flink/api/java/typeutils/ResultTypeQueryable.java",
+        "toEntityModifier": "public",
+        "toEntityLocation": {
+          "endLine": 62,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 26
+        },
+        "toParentId": 194465,
+        "depLocation": {
+          "endLine": 62,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 26
+        },
+        "concerned": 2
+      }
+    ],
+    [
+      {
+        "fromEntityId": 455430,
+        "fromEntity": "org.apache.flink.streaming.util.serialization.DeserializationSchema",
+        "fromEntityType": "Interface",
+        "fromEntityFile": "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java",
+        "fromEntityModifier": "public",
+        "fromEntityLocation": {
+          "endLine": 62,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 26
+        },
+        "fromParentId": 455430,
+        "relationType": "Inherit",
+        "toEntityId": 190496,
+        "toEntity": "org.apache.flink.api.common.serialization.DeserializationSchema",
+        "toEntityType": "Interface",
+        "toEntityFile": "flink-core/src/main/java/org/apache/flink/api/common/serialization/DeserializationSchema.java",
+        "toEntityModifier": "public",
+        "toEntityLocation": {
+          "endLine": 62,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 26
+        },
+        "toParentId": 190496,
+        "depLocation": {
+          "endLine": 62,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 26
+        },
+        "concerned": 2
+      },
+      {
+        "fromEntityId": 190496,
+        "fromEntity": "org.apache.flink.api.common.serialization.DeserializationSchema",
+        "fromEntityType": "Interface",
+        "fromEntityFile": "flink-core/src/main/java/org/apache/flink/api/common/serialization/DeserializationSchema.java",
+        "fromEntityModifier": "public",
+        "fromEntityLocation": {
+          "endLine": 128,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 30
+        },
+        "fromParentId": 190496,
+        "relationType": "Inherit",
+        "toEntityId": 194465,
+        "toEntity": "org.apache.flink.api.java.typeutils.ResultTypeQueryable",
+        "toEntityType": "Interface",
+        "toEntityFile": "flink-core/src/main/java/org/apache/flink/api/java/typeutils/ResultTypeQueryable.java",
+        "toEntityModifier": "public",
+        "toEntityLocation": {
+          "endLine": 128,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 30
+        },
+        "toParentId": 194465,
+        "depLocation": {
+          "endLine": 128,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 30
+        },
+        "concerned": 2
+      }
+    ]
+  ]
+}

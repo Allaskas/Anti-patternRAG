@@ -1,0 +1,38 @@
+- source_file: flink-core/src/main/java/org/apache/flink/api/common/serialization/TypeInformationSerializationSchema.java
+  class: TypeInformationSerializationSchema
+  extends: []
+  implements:
+  - DeserializationSchema
+  - SerializationSchema
+  path: {}
+  id: '1362'
+- source_file: flink-core/src/main/java/org/apache/flink/api/common/serialization/SerializationSchema.java
+  class: SerializationSchema
+  extends: []
+  implements:
+  - Serializable
+  path: {}
+  id: '1362'
+- source_file: flink-core/src/main/java/org/apache/flink/api/common/serialization/SerializationSchema.java
+  class: InitializationContext
+  extends: []
+  implements: []
+  path: {}
+  id: '1362'
+- source_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/TypeInformationSerializationSchema.java
+  class: TypeInformationSerializationSchema
+  extends:
+  - TypeInformationSerializationSchema
+  implements:
+  - DeserializationSchema
+  - SerializationSchema
+  path: {}
+  id: '1362'
+- source_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SerializationSchema.java
+  class: SerializationSchema
+  extends: []
+  implements:
+  - SerializationSchema
+  - Serializable
+  path: {}
+  id: '1362'

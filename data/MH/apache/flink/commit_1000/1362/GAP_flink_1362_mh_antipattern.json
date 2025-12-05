@@ -1,0 +1,167 @@
+{
+  "id": 1362,
+  "start": {
+    "object": "org.apache.flink.streaming.util.serialization.TypeInformationSerializationSchema",
+    "file": "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/TypeInformationSerializationSchema.java",
+    "modifier": "public",
+    "location": {
+      "endLine": 51,
+      "endColumn": 0,
+      "startColumn": 0,
+      "startLine": 25
+    }
+  },
+  "end": {
+    "object": "org.apache.flink.api.common.serialization.SerializationSchema",
+    "file": "flink-core/src/main/java/org/apache/flink/api/common/serialization/SerializationSchema.java",
+    "modifier": "public",
+    "location": {
+      "endLine": 87,
+      "endColumn": 0,
+      "startColumn": 0,
+      "startLine": 27
+    }
+  },
+  "multipath": [
+    [
+      {
+        "fromEntityId": 455423,
+        "fromEntity": "org.apache.flink.streaming.util.serialization.TypeInformationSerializationSchema",
+        "fromEntityType": "Class",
+        "fromEntityFile": "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/TypeInformationSerializationSchema.java",
+        "fromEntityModifier": "public",
+        "fromEntityLocation": {
+          "endLine": 51,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 25
+        },
+        "fromParentId": 455423,
+        "relationType": "Inherit",
+        "toEntityId": 190417,
+        "toEntity": "org.apache.flink.api.common.serialization.TypeInformationSerializationSchema",
+        "toEntityType": "Class",
+        "toEntityFile": "flink-core/src/main/java/org/apache/flink/api/common/serialization/TypeInformationSerializationSchema.java",
+        "toEntityModifier": "public",
+        "toEntityLocation": {
+          "endLine": 51,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 25
+        },
+        "toParentId": 190417,
+        "depLocation": {
+          "endLine": 51,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 25
+        },
+        "concerned": 2
+      },
+      {
+        "fromEntityId": 190417,
+        "fromEntity": "org.apache.flink.api.common.serialization.TypeInformationSerializationSchema",
+        "fromEntityType": "Class",
+        "fromEntityFile": "flink-core/src/main/java/org/apache/flink/api/common/serialization/TypeInformationSerializationSchema.java",
+        "fromEntityModifier": "public",
+        "fromEntityLocation": {
+          "endLine": 131,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 32
+        },
+        "fromParentId": 190417,
+        "relationType": "Implement",
+        "toEntityId": 190532,
+        "toEntity": "org.apache.flink.api.common.serialization.SerializationSchema",
+        "toEntityType": "Interface",
+        "toEntityFile": "flink-core/src/main/java/org/apache/flink/api/common/serialization/SerializationSchema.java",
+        "toEntityModifier": "public",
+        "toEntityLocation": {
+          "endLine": 131,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 32
+        },
+        "toParentId": 190532,
+        "depLocation": {
+          "endLine": 131,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 32
+        },
+        "concerned": 2
+      }
+    ],
+    [
+      {
+        "fromEntityId": 455423,
+        "fromEntity": "org.apache.flink.streaming.util.serialization.TypeInformationSerializationSchema",
+        "fromEntityType": "Class",
+        "fromEntityFile": "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/TypeInformationSerializationSchema.java",
+        "fromEntityModifier": "public",
+        "fromEntityLocation": {
+          "endLine": 51,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 25
+        },
+        "fromParentId": 455423,
+        "relationType": "Implement",
+        "toEntityId": 455443,
+        "toEntity": "org.apache.flink.streaming.util.serialization.SerializationSchema",
+        "toEntityType": "Interface",
+        "toEntityFile": "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SerializationSchema.java",
+        "toEntityModifier": "public",
+        "toEntityLocation": {
+          "endLine": 51,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 25
+        },
+        "toParentId": 455443,
+        "depLocation": {
+          "endLine": 51,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 25
+        },
+        "concerned": 2
+      },
+      {
+        "fromEntityId": 455443,
+        "fromEntity": "org.apache.flink.streaming.util.serialization.SerializationSchema",
+        "fromEntityType": "Interface",
+        "fromEntityFile": "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/SerializationSchema.java",
+        "fromEntityModifier": "public",
+        "fromEntityLocation": {
+          "endLine": 45,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 24
+        },
+        "fromParentId": 455443,
+        "relationType": "Inherit",
+        "toEntityId": 190532,
+        "toEntity": "org.apache.flink.api.common.serialization.SerializationSchema",
+        "toEntityType": "Interface",
+        "toEntityFile": "flink-core/src/main/java/org/apache/flink/api/common/serialization/SerializationSchema.java",
+        "toEntityModifier": "public",
+        "toEntityLocation": {
+          "endLine": 45,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 24
+        },
+        "toParentId": 190532,
+        "depLocation": {
+          "endLine": 45,
+          "endColumn": 0,
+          "startColumn": 0,
+          "startLine": 24
+        },
+        "concerned": 2
+      }
+    ]
+  ]
+}

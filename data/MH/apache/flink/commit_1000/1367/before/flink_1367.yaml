@@ -1,0 +1,44 @@
+- source_file: flink-core/src/main/java/org/apache/flink/api/common/serialization/AbstractDeserializationSchema.java
+  class: AbstractDeserializationSchema
+  extends: []
+  implements:
+  - DeserializationSchema
+  path: {}
+  id: '1367'
+- source_file: flink-core/src/main/java/org/apache/flink/api/common/serialization/DeserializationSchema.java
+  class: DeserializationSchema
+  extends: []
+  implements:
+  - Serializable
+  - ResultTypeQueryable
+  path: {}
+  id: '1367'
+- source_file: flink-core/src/main/java/org/apache/flink/api/common/serialization/DeserializationSchema.java
+  class: InitializationContext
+  extends: []
+  implements: []
+  path: {}
+  id: '1367'
+- source_file: flink-core/src/main/java/org/apache/flink/api/java/typeutils/ResultTypeQueryable.java
+  class: ResultTypeQueryable
+  extends: []
+  implements: []
+  path: {}
+  id: '1367'
+- source_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/AbstractDeserializationSchema.java
+  class: AbstractDeserializationSchema
+  extends:
+  - AbstractDeserializationSchema
+  implements:
+  - DeserializationSchema
+  path: {}
+  id: '1367'
+- source_file: flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java
+  class: DeserializationSchema
+  extends: []
+  implements:
+  - DeserializationSchema
+  - Serializable
+  - ResultTypeQueryable
+  path: {}
+  id: '1367'

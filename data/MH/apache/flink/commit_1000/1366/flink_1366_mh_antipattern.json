@@ -1,0 +1,18 @@
+{
+  "paths": [
+    [
+      "org.apache.flink.streaming.util.serialization.AbstractDeserializationSchema -> org.apache.flink.streaming.util.serialization.DeserializationSchema (Implement)",
+      "org.apache.flink.streaming.util.serialization.DeserializationSchema -> org.apache.flink.api.common.serialization.DeserializationSchema (Inherit)"
+    ],
+    [
+      "org.apache.flink.streaming.util.serialization.AbstractDeserializationSchema -> org.apache.flink.api.common.serialization.AbstractDeserializationSchema (Inherit)",
+      "org.apache.flink.api.common.serialization.AbstractDeserializationSchema -> org.apache.flink.api.common.serialization.DeserializationSchema (Implement)"
+    ]
+  ],
+  "files": [
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/AbstractDeserializationSchema.java",
+    "flink-core/src/main/java/org/apache/flink/api/common/serialization/DeserializationSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/AbstractDeserializationSchema.java",
+    "flink-streaming-java/src/main/java/org/apache/flink/streaming/util/serialization/DeserializationSchema.java"
+  ]
+}
