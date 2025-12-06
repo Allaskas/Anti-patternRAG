@@ -146,52 +146,65 @@ def build_mh_chunks(base_dir: Union[str, Path], antipattern_type, group_id):
         _, project_name, commit_number, case_id = parts
 
     # 找到 JSON 文件（一个案例文件夹应该只有一个 *antipattern.json）
-    json_files = list(base_dir.glob("*antipattern.json"))
-    if not json_files:
-        raise FileNotFoundError(f"No JSON name *antipattern.json file found in {base_dir}")
+    json_files = list(base_dir.glob("*mh_antipattern.json"))
+    if len(json_files) != 2:
+        raise FileNotFoundError(f"MH case requires exactly 2 *mh_antipattern.json files in {base_dir}")
 
-    json_path = json_files[0]
-    case = load_case_info(json_path)
+    # 分别识别 GAP 的和非 GAP 的
+    gap_json_path = None
+    case_json_path = None
+    for p in json_files:
+        if "GAP" in p.name:
+            gap_json_path = p
+        else:
+            case_json_path = p
 
-    # 解析 2 个 Java 文件路径, 构建 Java 文件的完整路径（from before/ 目录）
-    java_base_dir = base_dir / "before"
-    super_path = os.path.join(java_base_dir, case.super_class_path)
-    sub_path = os.path.join(java_base_dir, case.sub_class_path)
+    if gap_json_path is None:
+        raise FileNotFoundError("GAP_*mh_antipattern.json not found")
+    if case_json_path is None:
+        raise FileNotFoundError("*mh_antipattern.json (non-GAP) not found")
 
-    with open(super_path, 'r', encoding='utf-8') as f:
-        super_code = f.read()
+    before_dir = base_dir / "before"
+    yaml_files = list(before_dir.glob("*.yaml"))
+    if len(yaml_files) != 1:
+        raise FileNotFoundError(
+            f"MH case requires exactly one YAML file in before/, found {len(yaml_files)}"
+        )
+    yaml_path = yaml_files[0]
 
-    with open(sub_path, 'r', encoding='utf-8') as f:
-        sub_code = f.read()
+    fdesc_path = base_dir / "llm_function_description" / "before.json"
+    if not fdesc_path.exists():
+        raise FileNotFoundError(f"Missing llm_function_description/before.json in {base_dir}")
 
-    # 提取位置信息（仅使用第一个调用）
-    snippet = case.code_snippets[0]
-    parent_method_loc = parse_line_range(snippet.parent_method.location)
-    child_method_loc = parse_line_range(snippet.child_method.location)
-    invocation_loc = parse_line_range(snippet.invocation.location)
+    chunks = []
 
-    # 提取代码片段
-    parent_method_code = snippet.parent_method.code
-    child_method_code = snippet.child_method.code
-    invocation_code = snippet.invocation.code
+    # 1) GAP JSON chunk
+    chunks.append({
+        "chunk_type": "mh_gap_json",
+        "source_path": str(gap_json_path),
+        "code": gap_json_path.read_text(encoding="utf-8")
+    })
 
-    # ---- SuperClass 的子块 ----
-    print("start SuperClass Chunk")
-    super_chunks: List[BaseChunk] = []
-    super_chunks = extract_superclass_chunks(super_code, super_path, parent_method_loc, invocation_loc)
-    super_chunks.extend(llm_analyze_superclass(super_path, parent_method_code, invocation_code))
+    # 2) Case JSON chunk
+    chunks.append({
+        "chunk_type": "mh_case_json",
+        "source_path": str(case_json_path),
+        "code": case_json_path.read_text(encoding="utf-8")
+    })
 
-    # ---- SubClass 的子块 ----
-    print("start SubClass Chunk")
-    sub_chunks: List[BaseChunk] = []
-    sub_chunks = extract_subclass_chunks(sub_code, sub_path, child_method_loc)
-    sub_chunks.extend(llm_analyze_subclass(sub_path, child_method_code))
+    # 3) YAML chunk
+    chunks.append({
+        "chunk_type": "mh_yaml",
+        "source_path": str(yaml_path),
+        "code": yaml_path.read_text(encoding="utf-8")
+    })
 
-    # ---- 整合所有 chunk ----
-    all_chunks = super_chunks + sub_chunks
-    print(all_chunks)
-
-    json_chunks = [chunk.to_dict() for chunk in all_chunks]
+    # 4) Function description (text chunk)
+    chunks.append({
+        "chunk_type": "mh_function_description",
+        "source_path": str(fdesc_path),
+        "text": fdesc_path.read_text(encoding="utf-8")
+    })
 
     result = {
         "antipattern_type": antipattern_type,
@@ -199,7 +212,7 @@ def build_mh_chunks(base_dir: Union[str, Path], antipattern_type, group_id):
         "commit_number": commit_number,
         "id": case_id,
         "group_id": group_id,
-        "chunks": json_chunks
+        "chunks": chunks
     }
 
     if group_id < 0:
