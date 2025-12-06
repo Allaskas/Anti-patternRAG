@@ -1,0 +1,32 @@
+{
+  "group_id": 1,
+  "folder_path": "MH/flink/commit_1000/1366",
+  "CODE": {
+    "query_1": [
+      {
+        "chunk_type": "mh_case_json",
+        "score": 0.816924512386322
+      }
+    ],
+    "query_0": [
+      {
+        "chunk_type": "mh_gap_json",
+        "score": 0.8942916989326477
+      }
+    ],
+    "query_2": [
+      {
+        "chunk_type": "mh_yaml",
+        "score": 0.8495321273803711
+      }
+    ]
+  },
+  "TEXT": {
+    "query_0": [
+      {
+        "chunk_type": "mh_function_description",
+        "score": 0.9647643566131592
+      }
+    ]
+  }
+}

@@ -182,28 +182,28 @@ def build_mh_chunks(base_dir: Union[str, Path], antipattern_type, group_id):
     chunks.append({
         "chunk_type": "mh_gap_json",
         "source_path": str(gap_json_path),
-        "code": gap_json_path.read_text(encoding="utf-8")
+        "ast_subtree": gap_json_path.read_text(encoding="utf-8")
     })
 
     # 2) Case JSON chunk
     chunks.append({
         "chunk_type": "mh_case_json",
         "source_path": str(case_json_path),
-        "code": case_json_path.read_text(encoding="utf-8")
+        "ast_subtree": case_json_path.read_text(encoding="utf-8")
     })
 
     # 3) YAML chunk
     chunks.append({
         "chunk_type": "mh_yaml",
         "source_path": str(yaml_path),
-        "code": yaml_path.read_text(encoding="utf-8")
+        "ast_subtree": yaml_path.read_text(encoding="utf-8")
     })
 
     # 4) Function description (text chunk)
     chunks.append({
         "chunk_type": "mh_function_description",
         "source_path": str(fdesc_path),
-        "text": fdesc_path.read_text(encoding="utf-8")
+        "llm_description": fdesc_path.read_text(encoding="utf-8")
     })
 
     result = {
