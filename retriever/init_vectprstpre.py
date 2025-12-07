@@ -217,7 +217,7 @@ def match_query_to_candidate_chunks_faiss(query_dir: str, merged_dir: str):
     return merged_scores_dir
 
 
-def match_merged_chunks_faiss(merged_dir: str):
+def match_merged_chunks_faiss(merged_dir: str, antipattern_type: str):
     merged_dir = Path(merged_dir)
     score_files = []
 
@@ -257,6 +257,10 @@ def match_merged_chunks_faiss(merged_dir: str):
                 relative_candidate_path = candidate_dir.name
 
             rel_path_str = str(relative_candidate_path)
+
+            top_level = rel_path_str.split("/", 1)[0]
+            if top_level != antipattern_type:
+                continue
 
             if rel_path_str not in group_ids:
                 if candidate_metadata and "group_id" in candidate_metadata[0]:
@@ -359,6 +363,7 @@ def match_merged_chunks_faiss(merged_dir: str):
             score_files.append(output_file)
 
     return base_output_dir
+
 
 if __name__ == "__main__":
     match_merged_chunks_faiss("/Users/moncheri/Downloads/main/重构/反模式修复数据集构建/RefactorRAG/Anti-PatternRAG/tmp/vectorstore")

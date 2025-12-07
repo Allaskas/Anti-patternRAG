@@ -1,0 +1,12 @@
+{
+  "parent_method": 0.1,
+  "parent_call_child": 0.1,
+  "child_method": 0.1,
+  "parent_file_structure": 0.1,
+  "child_file_structure": 0.1,
+  "parent_file_summary": 0.1,
+  "parent_method_summary": 0.1,
+  "invocation_summary": 0.1,
+  "child_file_summary": 0.1,
+  "child_method_summary": 0.1
+}
